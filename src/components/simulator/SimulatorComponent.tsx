@@ -46,7 +46,7 @@ export default function SimulatorComponent() {
   return (
     <div className="flex flex-col gap-8">
       <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-gray-50 p-6 rounded-lg">
+        <div className="bg-white border border-gray-200 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-4">Tokenomics Parameters</h3>
           
           <div className="space-y-4">
@@ -175,7 +175,7 @@ export default function SimulatorComponent() {
             
             <button
               onClick={runSimulation}
-              className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md"
+              className="mt-4 w-full bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-md"
             >
               Run Simulation
             </button>
@@ -186,7 +186,7 @@ export default function SimulatorComponent() {
           <h3 className="text-xl font-semibold mb-4">Simulation Results</h3>
           
           {!isSimulated ? (
-            <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg">
               <p className="text-gray-500">
                 Adjust parameters and run simulation to see results
               </p>
@@ -218,12 +218,12 @@ export default function SimulatorComponent() {
                     <Tooltip />
                     <Legend />
                     <Line type="monotone" dataKey="stakingParticipation" stroke="#ff7300" name="Staking %" />
-                    <Line type="monotone" dataKey="governanceParticipation" stroke="#0088fe" name="Governance %" />
+                    <Line type="monotone" dataKey="governanceParticipation" stroke="#007BFF" name="Governance %" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
               
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="text-lg font-medium mb-2">Key Insights</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
