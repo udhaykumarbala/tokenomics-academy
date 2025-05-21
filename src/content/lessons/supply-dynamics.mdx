@@ -1,0 +1,119 @@
+# Supply Dynamics
+
+Supply dynamics refer to how a token's total supply changes over time, which directly influences its value proposition and economic behavior.
+
+## Understanding Token Supply Models
+
+Token supply models determine how many tokens exist and how that number changes over time:
+
+- **Fixed Supply**: A capped maximum number of tokens (e.g., Bitcoin's 21 million limit)
+- **Inflationary Supply**: New tokens are continuously created at a predefined rate
+- **Deflationary Supply**: Tokens are systematically removed from circulation (burned)
+- **Hybrid Models**: Combining elements of the above models with conditional mechanisms
+
+## Emission Schedules
+
+### Linear Emission
+
+Linear emission releases tokens at a constant rate over time.
+
+```
+Year 1: 10,000,000 tokens
+Year 2: 10,000,000 tokens
+Year 3: 10,000,000 tokens
+```
+
+**Pros**: Predictable, easy to understand
+**Cons**: Doesn't adapt to network growth or market conditions
+
+### Exponential Decay
+
+Exponential decay reduces the emission rate over time, often by a fixed percentage.
+
+```
+Year 1: 10,000,000 tokens
+Year 2: 5,000,000 tokens
+Year 3: 2,500,000 tokens
+```
+
+**Pros**: Frontloads incentives while becoming more scarce over time
+**Cons**: May not provide sufficient long-term incentives
+
+### Milestone-Based
+
+Emissions tied to specific project milestones or achievements.
+
+**Pros**: Aligns token distribution with project success
+**Cons**: Potentially unpredictable, subject to project team discretion
+
+## Token Burns
+
+Token burning permanently removes tokens from circulation, creating deflationary pressure.
+
+### Burn Mechanisms
+
+- **Fee Burns**: A percentage of transaction fees is burned
+- **Buy-Back and Burn**: Project revenue used to purchase and burn tokens
+- **Burning on Usage**: Tokens consumed when using specific network functions
+
+> **Case Study**: Binance's BNB conducts quarterly burns based on trading volume, aiming to eventually burn 50% of the total supply.
+
+## Vesting and Lockups
+
+### Vesting Schedules
+
+Vesting gradually releases tokens to stakeholders over time:
+
+- **Linear Vesting**: Equal portions released at regular intervals
+- **Cliff Vesting**: No tokens released until a specific date, then either all at once or on a schedule
+- **Milestone-Based Vesting**: Tokens released when specific project goals are achieved
+
+### Importance of Vesting
+
+Vesting mechanisms:
+
+- Prevent immediate selling pressure
+- Align long-term incentives of team and investors
+- Signal commitment to the project's future
+- Provide price stability during early project stages
+
+## Impact on Token Value
+
+Supply dynamics directly impact a token's value proposition:
+
+| Supply Model | Typical Value Proposition | Example Projects |
+| --- | --- | --- |
+| Fixed | Store of Value | Bitcoin, Yearn Finance |
+| Inflationary | Network Participation | Ethereum (pre-merge), Cosmos |
+| Deflationary | Medium of Exchange | BNB, SafeMoon |
+| Elastic | Price Stability | Ampleforth, BASE |
+
+### Supply Elasticity
+
+Some tokens implement elastic supply mechanisms that adjust based on market demand to target price stability:
+
+- **Rebase Tokens**: Automatically adjust supply across all wallets to maintain price targets
+- **Minting/Burning Mechanisms**: Create or destroy tokens based on algorithmic rules
+
+## Simulating Supply Dynamics
+
+When designing token supply dynamics, consider these key questions:
+
+- What is the token's primary purpose? (Store of value, medium of exchange, governance, etc.)
+- What initial distribution best supports your ecosystem growth?
+- How will supply changes incentivize desired user behaviors?
+- What emission schedule best balances short-term incentives with long-term sustainability?
+
+[Try our simulator](/simulator) to experiment with different supply dynamics parameters and see how they affect your token's value over time.
+
+## Next Steps
+
+In the next lesson, we'll explore staking mechanisms and how they interact with token supply dynamics to create economic security and incentives.
+
+export function getLesson() {
+  return {
+    title: "Supply Dynamics",
+    description: "Learn how token supply models, emission schedules, and burns affect tokenomics",
+    nextLesson: "/lessons/staking-mechanisms"
+  };
+}

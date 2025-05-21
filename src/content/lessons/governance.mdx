@@ -1,0 +1,191 @@
+# Token Governance
+
+Token governance is the system by which token holders participate in decision-making processes for a protocol or platform. Effective governance models are critical for sustainable and decentralized crypto projects.
+
+## Why Token Governance Matters
+
+Governance is essential to crypto projects for several reasons:
+
+- **Decentralization**: Distributes decision-making power among stakeholders
+- **Adaptability**: Enables protocols to evolve and improve over time
+- **Community Alignment**: Creates mechanisms to resolve conflicts and build consensus
+- **Regulatory Resilience**: Reduces central points of failure and control
+
+## Governance Models
+
+### 1. On-Chain Governance
+
+In on-chain governance, voting and execution of decisions happen directly on the blockchain.
+
+**Key characteristics**:
+- Voting record is transparent and immutable
+- Results can be automatically executed via smart contracts
+- Typically requires token staking or locking for vote weight
+
+**Examples**: Tezos, Compound, MakerDAO
+
+### 2. Off-Chain Governance
+
+Off-chain governance involves discussion and signaling that occurs outside the blockchain, even if final implementation happens on-chain.
+
+**Key characteristics**:
+- More flexible discussion format
+- Lower transaction costs
+- Often uses "signaling votes" that don't directly trigger code changes
+
+**Examples**: Ethereum, Bitcoin, Uniswap (initial versions)
+
+### 3. Hybrid Models
+
+Many projects use elements of both on-chain and off-chain governance.
+
+**Common flow**:
+1. Off-chain discussion and proposal drafting
+2. On-chain signaling vote
+3. Final on-chain vote with executable code
+4. Automatic or multi-sig execution
+
+## Voting Mechanisms
+
+### Token-Weighted Voting
+
+The most common model where voting power is proportional to token holdings.
+
+**Pros**:
+- Simple to implement and understand
+- Aligns voting power with economic stake
+- Clear and deterministic outcomes
+
+**Cons**:
+- Susceptible to plutocracy ("rich get richer")
+- Vulnerable to vote buying and exchange voting
+- May lead to low participation from smaller holders
+
+### Quadratic Voting
+
+Voting power scales as the square root of tokens held, giving diminishing returns to large holders.
+
+```
+Voting Power = √(Token Holdings)
+```
+
+**Pros**:
+- More equitable distribution of influence
+- Reduces plutocratic control
+- Incentivizes broader participation
+
+**Cons**:
+- Vulnerable to Sybil attacks (identity splitting)
+- More complex to implement
+- May still favor wealthy participants
+
+### Conviction Voting
+
+Voting power increases the longer tokens are locked in support of a proposal.
+
+**Pros**:
+- Rewards long-term commitment
+- Reduces vote flipping and manipulation
+- Can enable continuous funding decisions
+
+**Cons**:
+- More complex UX
+- Slower decision-making
+- Can favor patient capital over urgent needs
+
+## Delegation and Liquid Democracy
+
+Many governance systems allow token holders to delegate their voting power.
+
+**Benefits of delegation**:
+- Improves participation rates
+- Enables expertise-based voting
+- Reduces costs for individual voters
+
+> **Case Study**: Compound's delegation system allowed users to maintain liquidity while still participating in governance through trusted delegates.
+
+## Common Governance Components
+
+### 1. Proposal System
+
+Methods for suggesting changes to the protocol:
+
+- **Forum discussions**: Initial ideation and feedback gathering
+- **Improvement proposals**: Standardized format for suggesting changes
+- **Formal proposal submission**: On-chain action to initiate voting
+
+### 2. Voting Mechanisms
+
+Parameters that define how votes are counted:
+
+- **Quorum**: Minimum participation required for a valid vote
+- **Approval threshold**: Percentage of "yes" votes needed to pass
+- **Voting period**: Time window during which votes can be cast
+- **Vote counting method**: Simple majority, supermajority, etc.
+
+### 3. Execution Systems
+
+How approved decisions are implemented:
+
+- **Timelock**: Delay between approval and execution
+- **Multi-signature**: Requires multiple keyholders to approve execution
+- **Automatic execution**: Smart contracts implement changes without intervention
+
+## Governance Challenges
+
+### Voter Apathy
+
+Many governance systems suffer from low participation rates.
+
+**Potential solutions**:
+- Vote incentives (governance mining)
+- Delegation systems
+- Simpler voting interfaces
+- Educational resources
+
+### Governance Attacks
+
+Several attack vectors threaten token governance:
+
+- **Governance tokens as attack vector**: Acquiring enough tokens to force malicious proposals
+- **Flash loan attacks**: Borrowing tokens temporarily to influence votes
+- **Bribery**: Paying token holders to vote a certain way
+
+**Mitigation strategies**:
+- Voting delays
+- Token lockups before voting
+- Graduated voting weight based on holding period
+
+## DAOs (Decentralized Autonomous Organizations)
+
+DAOs are organizations where governance and operations are coordinated through blockchain mechanisms.
+
+### Types of DAOs
+
+- **Protocol DAOs**: Govern decentralized protocols (e.g., MakerDAO)
+- **Investment DAOs**: Pool capital for investments (e.g., The LAO)
+- **Service DAOs**: Provide services to clients (e.g., Raid Guild)
+- **Social DAOs**: Community-focused organizations (e.g., Friends With Benefits)
+- **Collector DAOs**: Acquire and manage assets (e.g., PleasrDAO)
+
+## Designing Effective Governance
+
+When designing token governance, consider:
+
+1. **Accessibility**: Can average users participate meaningfully?
+2. **Security**: Is the system resistant to attacks and manipulation?
+3. **Efficiency**: Can decisions be made in a timely manner?
+4. **Inclusivity**: Do all stakeholder types have appropriate representation?
+5. **Flexibility**: Can the system evolve as needs change?
+
+## Next Steps
+
+In our final lesson, we'll explore common tokenomic patterns that combine supply dynamics, staking, and governance into cohesive economic systems.
+
+export function getLesson() {
+  return {
+    title: "Token Governance",
+    description: "Explore how token-based governance systems enable decentralized decision making",
+    nextLesson: "/lessons/tokenomic-patterns"
+  };
+}

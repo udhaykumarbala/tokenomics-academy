@@ -1,0 +1,189 @@
+# Tokenomic Patterns
+
+Tokenomic patterns are proven templates for token economics that address specific use cases or value propositions. Understanding these patterns can help you design more effective token systems.
+
+## Why Study Tokenomic Patterns?
+
+Like design patterns in software engineering, tokenomic patterns:
+
+- **Provide Tested Solutions**: Based on real-world implementations that have proven successful
+- **Create Common Language**: Help teams communicate complex economic systems
+- **Avoid Common Pitfalls**: Learn from mistakes that others have already made
+- **Accelerate Design**: Start with a pattern and customize, rather than designing from scratch
+
+## Core Tokenomic Patterns
+
+### 1. Work Token Model
+
+In this pattern, tokens represent the right to provide services to the network and earn fees.
+
+**Key characteristics**:
+- Tokens must be staked to perform work
+- Work quality is incentivized through stake slashing
+- Rewards come from fees, not inflation
+
+**Examples**: Keep Network, Livepeer, The Graph
+
+> **Case Study**: Livepeer requires video transcoding providers to stake tokens, with rewards distributed based on work performed and penalties for poor service.
+
+### 2. Usage Token / Payment Token
+
+Tokens are used directly as payment for services within the ecosystem.
+
+**Key characteristics**:
+- Value tied to demand for network services
+- Often include burn mechanisms to create deflationary pressure
+- May offer discounts compared to fiat payment options
+
+**Examples**: BNB, FIL, RNDR
+
+### 3. Governance Token
+
+Primary value comes from the right to participate in protocol decision-making.
+
+**Key characteristics**:
+- Voting rights on protocol changes
+- Often paired with fee-sharing mechanisms
+- Value derives from future protocol revenue/growth expectations
+
+**Examples**: UNI, COMP, AAVE
+
+### 4. Discount Token
+
+Tokens provide fee discounts when using platform services.
+
+**Key characteristics**:
+- Creates strong buy pressure when platform usage grows
+- Incentivizes long-term holding for frequent users
+- Often combined with other utility
+
+**Examples**: BNB, CRO, FTT (historical)
+
+### 5. Seigniorage Shares
+
+A multi-token system designed to maintain a stablecoin peg.
+
+**Key characteristics**:
+- Separate tokens for stability and growth
+- Algorithmic expansion and contraction
+- Incentives aligned with maintaining peg
+
+**Examples**: Basis (original design), Empty Set Dollar, Frax (modified version)
+
+## Hybrid Models and Innovations
+
+### Multi-Token Ecosystems
+
+Many projects use multiple tokens with specialized functions:
+
+**Examples**:
+- MakerDAO: DAI (stablecoin) and MKR (governance)
+- Curve: CRV (governance) and various liquidity tokens
+- Axie Infinity: AXS (governance) and SLP (in-game rewards)
+
+### Vetoken Model (Vote Escrow)
+
+Tokens locked for governance gain multiplied voting power based on lock duration.
+
+**Key characteristics**:
+- Longer locks = more governance power
+- Aligns incentives for long-term thinking
+- Often includes boosted rewards based on lock time
+
+**Examples**: Curve (veCRV), Balancer (veBAL), Frax (veFXS)
+
+![Vote Escrow Model](https://d31h13bdjwgzxs.cloudfront.net/academy/curveacademy/vecrv.png)
+
+### Rage Quit and Moloch Models
+
+DAO patterns that protect minority stakeholders by allowing them to exit with their fair share of assets if they disagree with a decision.
+
+**Examples**: MolochDAO, DAOhaus
+
+## Tokenomic Anti-Patterns
+
+### Infinite Supply Without Utility
+
+Tokens with unlimited supply and insufficient burn mechanisms or utility typically fail.
+
+**Warning signs**:
+- High inflation with no corresponding value creation
+- Rewards solely from new token issuance
+- Lack of sustainable use cases
+
+### Ponzinomics
+
+Models that rely primarily on new entrants buying tokens to pay returns to earlier participants.
+
+**Warning signs**:
+- Marketing focused on APY rather than utility
+- Returns dependent on token price appreciation
+- Excessive referral rewards
+
+### Complexity Without Purpose
+
+Over-engineered token systems that users and investors can't understand.
+
+**Warning signs**:
+- Multiple interconnected tokens without clear purposes
+- Convoluted mechanics that obscure economic flows
+- Frequent mechanic changes to "fix" price action
+
+## Industry-Specific Patterns
+
+### DeFi Token Patterns
+
+- **Protocol Owned Liquidity**: Protocols own their own trading liquidity (e.g., Olympus DAO)
+- **Liquidity Mining**: Token rewards for providing liquidity (e.g., Compound, Uniswap)
+- **Lending Platforms**: Collateralized loans with interest sharing (e.g., Aave, Compound)
+
+### GameFi Token Patterns
+
+- **Dual-Token Model**: Separating governance and in-game currency (e.g., Axie Infinity)
+- **Play-to-Earn**: Rewarding gameplay with tokens (e.g., StepN, Thetan Arena)
+- **NFT + Utility Token**: NFTs representing assets, tokens for actions (e.g., Gods Unchained)
+
+### DAO Token Patterns
+
+- **Contribution Mining**: Tokens earned through work contributions (e.g., GitcoinDAO)
+- **Reputation Systems**: Non-transferable influence based on contributions (e.g., DAOstack)
+- **Investment DAOs**: Pooling capital with shared governance (e.g., MetaCartel Ventures)
+
+## Designing With Patterns
+
+When designing a token economy, consider:
+
+1. **Start With Use Case**: Select patterns that match your core value proposition
+2. **Mix and Match**: Combine elements from different patterns as needed
+3. **Simplify**: Only add complexity when it serves a clear purpose
+4. **Test and Iterate**: Simulate different scenarios before implementation
+5. **Consider All Stakeholders**: Ensure incentives align for all ecosystem participants
+
+## Evaluating Tokenomic Patterns
+
+When evaluating a token design, ask:
+
+- Is there sustainable value accrual?
+- Are incentives aligned for all participants?
+- Is the model resilient to market downturns?
+- Does it solve a real economic problem?
+- Are supply and demand mechanics balanced?
+
+## Next Steps
+
+Congratulations! You've completed our tokenomics curriculum. Now you can put your knowledge to work:
+
+- Use our [interactive simulator](/simulator) to test different tokenomic designs
+- Review case studies of successful and failed projects
+- Connect with other tokenomics enthusiasts and designers
+- Start designing your own token economy
+
+We hope these lessons have provided a solid foundation for understanding and creating effective token economies. The field continues to evolve rapidly, so keep learning and experimenting!
+
+export function getLesson() {
+  return {
+    title: "Tokenomic Patterns",
+    description: "Explore common tokenomic design patterns and how they can be applied to different use cases",
+    nextLesson: "/lessons/introduction"  // Loop back to the beginning
+  };
+}
