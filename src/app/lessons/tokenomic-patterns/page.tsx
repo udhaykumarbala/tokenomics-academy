@@ -75,6 +75,12 @@ export default function TokenomicPatternsLessonPage() {
                   <li><strong>Accelerate Design</strong>: Start with a pattern and customize, rather than designing from scratch</li>
                 </ul>
                 
+                <div className="key-takeaway">
+                  Tokenomic patterns are not rigid templates but rather flexible frameworks that can be adapted to specific project needs and contexts.
+                </div>
+                
+                <div className="section-divider"></div>
+                
                 <h3>Core Tokenomic Patterns</h3>
                 
                 <h4>1. Work Token Model</h4>
@@ -93,8 +99,8 @@ export default function TokenomicPatternsLessonPage() {
                   <strong>Examples</strong>: Keep Network, Livepeer, The Graph
                 </p>
                 
-                <div className="bg-blue-50 p-4 my-4 border-l-4 border-blue-500 italic">
-                  <strong>Case Study</strong>: Livepeer requires video transcoding providers to stake tokens, with rewards distributed based on work performed and penalties for poor service.
+                <div className="case-study">
+                  Livepeer requires video transcoding providers to stake tokens, with rewards distributed based on work performed and penalties for poor service.
                 </div>
                 
                 <h4>2. Usage Token / Payment Token</h4>
@@ -113,6 +119,15 @@ export default function TokenomicPatternsLessonPage() {
                   <strong>Examples</strong>: BNB, FIL, RNDR
                 </p>
                 
+                <div className="example">
+                  <div className="example-header">BNB Token Usage</div>
+                  <p>
+                    Binance's BNB token was initially designed primarily as a discount token for trading fees. The more you use the Binance platform for trading, the more value you get from holding BNB tokens.
+                  </p>
+                </div>
+                
+                <div className="section-divider"></div>
+                
                 <h4>3. Governance Token</h4>
                 <p>
                   Primary value comes from the right to participate in protocol decision-making.
@@ -128,6 +143,10 @@ export default function TokenomicPatternsLessonPage() {
                 <p>
                   <strong>Examples</strong>: UNI, COMP, AAVE
                 </p>
+                
+                <div className="callout">
+                  Governance tokens give holders a say in protocol development, parameter adjustments, treasury management, and other crucial decisions. The more tokens held, the greater the voting power.
+                </div>
                 
                 <h4>4. Discount Token</h4>
                 <p>
@@ -293,6 +312,12 @@ export default function TokenomicPatternsLessonPage() {
                   <li>Does it solve a real economic problem?</li>
                   <li>Are supply and demand mechanics balanced?</li>
                 </ul>
+                
+                <div className="key-takeaway">
+                  The most effective tokenomics systems align incentives between token holders, users, and the protocol itself, creating sustainable value for all participants.
+                </div>
+                
+                <div className="section-divider"></div>
                 
                 <h3>Next Steps</h3>
                 <p>

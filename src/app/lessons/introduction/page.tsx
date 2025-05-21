@@ -65,6 +65,8 @@ export default function IntroductionLessonPage() {
                   Tokenomics refers to the economics of a cryptocurrency or token. It encompasses all aspects that make a particular token valuable and interesting to investors, including the token's creation, distribution, supply mechanisms, utility, and more. Good tokenomics is designed to incentivize certain behaviors that benefit the underlying protocol or application.
                 </p>
                 
+                <div className="section-divider"></div>
+                
                 <h3>Why Tokenomics Matters</h3>
                 <p>
                   Tokenomics is crucial because it directly impacts a token's:
@@ -74,6 +76,12 @@ export default function IntroductionLessonPage() {
                   <li><strong>Network Growth</strong>: It incentivizes participation and usage</li>
                   <li><strong>Long-term Sustainability</strong>: It ensures the project can survive and thrive</li>
                 </ul>
+                
+                <div className="key-takeaway">
+                  Well-designed tokenomics creates a virtuous cycle where token utility drives demand, which supports price, which attracts participants, which increases utility.
+                </div>
+                
+                <div className="section-divider"></div>
                 
                 <h3>Key Components of Tokenomics</h3>
                 
@@ -86,6 +94,10 @@ export default function IntroductionLessonPage() {
                   <li><strong>Maximum Supply</strong>: The maximum amount of tokens that will ever exist (if capped)</li>
                   <li><strong>Circulating Supply</strong>: The number of tokens currently in public circulation</li>
                 </ul>
+                
+                <div className="callout">
+                  Bitcoin has a capped maximum supply of 21 million coins, while Ethereum has no maximum supply limit—instead, it has a controlled issuance rate.
+                </div>
                 
                 <h4>2. Token Distribution</h4>
                 <p>
@@ -108,6 +120,8 @@ export default function IntroductionLessonPage() {
                   <li><strong>Transaction Fees</strong>: Payment for using the platform's services</li>
                   <li><strong>Collateral</strong>: Backing loans or other financial products</li>
                 </ul>
+                
+                <div className="section-divider"></div>
                 
                 <h3>Next Steps</h3>
                 <p>

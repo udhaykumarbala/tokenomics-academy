@@ -75,6 +75,12 @@ export default function GovernanceLessonPage() {
                   <li><strong>Regulatory Resilience</strong>: Reduces central points of failure and control</li>
                 </ul>
                 
+                <div className="key-takeaway">
+                  Well-designed governance systems balance efficiency in decision-making with broad stakeholder representation, avoiding both gridlock and capture by large holders.
+                </div>
+                
+                <div className="section-divider"></div>
+                
                 <h3>Governance Models</h3>
                 
                 <h4>1. On-Chain Governance</h4>
@@ -93,6 +99,10 @@ export default function GovernanceLessonPage() {
                   <strong>Examples</strong>: Tezos, Compound, MakerDAO
                 </p>
                 
+                <div className="case-study">
+                  MakerDAO uses an on-chain governance system where MKR token holders vote on critical protocol parameters like stability fees and debt ceilings. The voting weight is proportional to the amount of MKR each holder stakes in the voting contract.
+                </div>
+                
                 <h4>2. Off-Chain Governance</h4>
                 <p>
                   Off-chain governance involves discussion and signaling that occurs outside the blockchain, even if final implementation happens on-chain.
@@ -108,6 +118,12 @@ export default function GovernanceLessonPage() {
                 <p>
                   <strong>Examples</strong>: Ethereum, Bitcoin, Uniswap (initial versions)
                 </p>
+                
+                <div className="callout">
+                  Despite being criticized for centralization risks, off-chain governance can enable more nuanced decision-making and wider participation from stakeholders who may not be able to afford on-chain voting costs.
+                </div>
+                
+                <div className="section-divider"></div>
                 
                 <h4>3. Hybrid Models</h4>
                 <p>
@@ -150,9 +166,9 @@ export default function GovernanceLessonPage() {
                 <p>
                   Voting power scales as the square root of tokens held, giving diminishing returns to large holders.
                 </p>
-                <pre className="bg-gray-100 p-4 rounded">
+                <div className="formula">
                   Voting Power = √(Token Holdings)
-                </pre>
+                </div>
                 <p>
                   <strong>Pros</strong>:
                 </p>
@@ -169,6 +185,15 @@ export default function GovernanceLessonPage() {
                   <li>More complex to implement</li>
                   <li>May still favor wealthy participants</li>
                 </ul>
+                
+                <div className="example">
+                  <div className="example-header">Quadratic Voting Example</div>
+                  <p>
+                    In a standard token voting system, a wallet with 100 tokens would have 100 votes. With quadratic voting, they would have √100 = 10 votes. This means that 10 users with 1 token each would have the same voting power (10 votes total) as one user with 100 tokens.
+                  </p>
+                </div>
+                
+                <div className="section-divider"></div>
                 
                 <h4>Conviction Voting</h4>
                 <p>
@@ -204,9 +229,11 @@ export default function GovernanceLessonPage() {
                   <li>Reduces costs for individual voters</li>
                 </ul>
                 
-                <div className="bg-blue-50 p-4 my-4 border-l-4 border-blue-500 italic">
+                <div className="case-study">
                   <strong>Case Study</strong>: Compound's delegation system allowed users to maintain liquidity while still participating in governance through trusted delegates.
                 </div>
+                
+                <div className="section-divider"></div>
                 
                 <h3>Common Governance Components</h3>
                 
@@ -301,6 +328,12 @@ export default function GovernanceLessonPage() {
                   <li><strong>Inclusivity</strong>: Do all stakeholder types have appropriate representation?</li>
                   <li><strong>Flexibility</strong>: Can the system evolve as needs change?</li>
                 </ol>
+                
+                <div className="key-takeaway">
+                  The most effective governance systems are those that balance power among different stakeholders, remain accessible to participants of varying sizes, and can adapt based on the protocol's evolving needs.
+                </div>
+                
+                <div className="section-divider"></div>
                 
                 <h3>Next Steps</h3>
                 <p>
