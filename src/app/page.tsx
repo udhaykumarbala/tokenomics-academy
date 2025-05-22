@@ -87,7 +87,7 @@ export default function Home() {
           <p className="mt-2">
             <Link href="/about" className="text-primary hover:text-primary-dark hover:underline">About</Link>
             {" • "}
-            <a href="https://github.com/udhaykumarbala/tokenomics-simulator" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark hover:underline">
+            <a href="https://github.com/udhaykumarbala/tokenomics-academy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark hover:underline">
               GitHub
             </a>
           </p>

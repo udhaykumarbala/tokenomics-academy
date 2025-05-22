@@ -20,8 +20,8 @@ Tokenomics Academy is a fully‑client‑rendered learning platform built with N
 
 1. Clone the repository:
    ```
-   git clone https://github.com/udhaykumarbala/tokenomics-simulator.git
-   cd tokenomics-simulator
+   git clone https://github.com/udhaykumarbala/tokenomics-academy.git
+   cd tokenomics-academy
    ```
 
 2. Install dependencies:
