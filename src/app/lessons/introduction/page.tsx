@@ -46,7 +46,7 @@ export default function IntroductionLessonPage() {
               </ul>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <Link 
-                  href="/simulator" 
+                  href="simulator" 
                   className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full block text-center"
                 >
                   Open Simulator
@@ -140,7 +140,7 @@ export default function IntroductionLessonPage() {
                       Next Lesson
                     </Link>
                     <Link 
-                      href="/simulator" 
+                      href="simulator" 
                       className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded"
                     >
                       Try Simulator
