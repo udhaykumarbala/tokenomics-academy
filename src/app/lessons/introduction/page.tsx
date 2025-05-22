@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function IntroductionLessonPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container mx-auto">
           <h1 className="text-3xl font-bold">Tokenomics Lessons</h1>
           <p className="mt-2 text-lg">Introduction to Tokenomics</p>
@@ -14,7 +14,7 @@ export default function IntroductionLessonPage() {
         <div className="mb-8">
           <Link 
             href="/"
-            className="text-blue-600 hover:text-blue-800 inline-flex items-center"
+            className="text-primary hover:text-primary-dark inline-flex items-center"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -141,7 +141,7 @@ export default function IntroductionLessonPage() {
                     </Link>
                     <Link 
                       href="simulator" 
-                      className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded"
+                      className="bg-white border border-primary text-primary hover:bg-primary-light-opacity font-medium py-2 px-4 rounded"
                     >
                       Try Simulator
                     </Link>
@@ -153,13 +153,13 @@ export default function IntroductionLessonPage() {
         </div>
       </main>
 
-      <footer className="bg-gray-100 py-8 px-4 sm:px-8">
-        <div className="container mx-auto text-center text-gray-600">
+      <footer className="py-8 px-4 sm:px-8" style={{backgroundColor: "#0A0E1A"}}>
+        <div className="container mx-auto text-center text-gray-300">
           <p>Tokenomics Academy - A fully client-rendered learning platform built with Next.js 14</p>
           <p className="mt-2">
-            <Link href="/about" className="text-blue-600 hover:underline">About</Link>
+            <Link href="/about" className="text-primary hover:text-primary-dark hover:underline">About</Link>
             {" • "}
-            <a href="https://github.com/udhaykumarbala/tokenomics-academy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+            <a href="https://github.com/udhaykumarbala/tokenomics-academy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark hover:underline">
               GitHub
             </a>
           </p>

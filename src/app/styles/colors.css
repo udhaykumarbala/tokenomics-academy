@@ -1,0 +1,62 @@
+/* Web3-inspired color palette utility classes */
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.text-primary {
+  color: var(--primary-color);
+}
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+.text-secondary {
+  color: var(--secondary-color);
+}
+.border-secondary {
+  border-color: var(--secondary-color);
+}
+
+.bg-glass {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(8px);
+}
+
+.bg-success {
+  background-color: var(--success-color);
+}
+.text-success {
+  color: var(--success-color);
+}
+
+.bg-warning {
+  background-color: var(--warning-color);
+}
+.text-warning {
+  color: var(--warning-color);
+}
+
+/* Hover effects */
+.hover\:bg-primary-dark:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+.hover\:text-primary-dark:hover {
+  color: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+.hover\:bg-primary-light-opacity:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 15%, transparent);
+}
+.hover\:bg-gradient:hover {
+  background-image: var(--button-hover-gradient);
+}
+
+/* Glass card styling */
+.card-glass {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+}

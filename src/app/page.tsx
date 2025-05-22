@@ -21,7 +21,7 @@ export default function Home() {
             <div className="flex gap-4 flex-wrap">
               <Link 
                 href="/lessons/introduction" 
-                className="bg-primary hover:bg-primary-dark text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                className="bg-primary hover:bg-gradient text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 Start Learning
               </Link>
@@ -34,23 +34,23 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-xl p-8 flex flex-col">
+          <div className="bg-glass border border-gray-200 rounded-xl p-8 flex flex-col text-white backdrop-blur-md">
             <h3 className="text-xl font-semibold mb-4">What you'll learn:</h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-start">
-                <span className="text-green-500 mr-2">✓</span>
+                <span className="text-success mr-2">✓</span>
                 <span>Supply dynamics: inflation, burns, and vesting</span>
               </li>
               <li className="flex items-start">
-                <span className="text-green-500 mr-2">✓</span>
+                <span className="text-success mr-2">✓</span>
                 <span>Staking mechanics and reward systems</span>
               </li>
               <li className="flex items-start">
-                <span className="text-green-500 mr-2">✓</span>
+                <span className="text-success mr-2">✓</span>
                 <span>Governance parameters and voting power</span>
               </li>
               <li className="flex items-start">
-                <span className="text-green-500 mr-2">✓</span>
+                <span className="text-success mr-2">✓</span>
                 <span>Tokenomic sustainability and long-term design</span>
               </li>
             </ul>
@@ -65,15 +65,15 @@ export default function Home() {
         <div className="mt-20">
           <h2 className="text-2xl font-bold mb-6 text-center">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white">
               <div className="text-primary font-bold text-xl mb-2">1. Learn Concepts</div>
               <p>Start with bite-sized lessons on tokenomics fundamentals and advanced concepts.</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white">
               <div className="text-primary font-bold text-xl mb-2">2. Experiment</div>
               <p>Use the simulator to adjust parameters and see how they affect token metrics over time.</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white">
               <div className="text-primary font-bold text-xl mb-2">3. Master</div>
               <p>Apply your knowledge to design robust token economies with balanced incentives.</p>
             </div>
@@ -81,8 +81,8 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="bg-gray-200 py-8 px-4 sm:px-8">
-        <div className="container mx-auto text-center text-gray-600">
+      <footer className="bg-dark py-8 px-4 sm:px-8" style={{backgroundColor: "#0A0E1A"}}>
+        <div className="container mx-auto text-center text-gray-300">
           <p>Tokenomics Academy - A fully client-rendered learning platform built with Next.js 14</p>
           <p className="mt-2">
             <Link href="/about" className="text-primary hover:text-primary-dark hover:underline">About</Link>
