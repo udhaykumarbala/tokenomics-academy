@@ -8,14 +8,30 @@ import { useEffect, useState } from "react";
 export default function TokenomicPatternsLessonPage() {
   const [showConfetti, setShowConfetti] = useState(false);
   
-  // Trigger confetti when the component mounts - this will only happen when user reaches this page
   useEffect(() => {
-    // Small delay to ensure the page is loaded before showing confetti
-    const timer = setTimeout(() => {
-      setShowConfetti(true);
-    }, 500);
-    
-    return () => clearTimeout(timer);
+    try {
+      // Check if we've already shown the confetti in this session
+      const hasShownConfetti = localStorage.getItem('hasShownLessonCompleteConfetti');
+      
+      if (!hasShownConfetti) {
+        // Small delay to ensure the page is loaded before showing confetti
+        const timer = setTimeout(() => {
+          setShowConfetti(true);
+          // Remember that we've shown the confetti in this session
+          localStorage.setItem('hasShownLessonCompleteConfetti', 'true');
+        }, 500);
+        
+        return () => clearTimeout(timer);
+      }
+    } catch (error) {
+      // If localStorage is not available (e.g., in private browsing mode)
+      // Just show the confetti anyway as a fallback
+      const timer = setTimeout(() => {
+        setShowConfetti(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
