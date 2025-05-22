@@ -1,16 +1,15 @@
 import Link from "next/link";
+import { Navigation, Footer } from "@/components/navigation";
 
 export default function IntroductionLessonPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-primary to-secondary text-white">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-bold">Tokenomics Lessons</h1>
-          <p className="mt-2 text-lg">Introduction to Tokenomics</p>
-        </div>
-      </header>
+      <Navigation 
+        title="Tokenomics Lessons" 
+        subtitle="Introduction to Tokenomics" 
+      />
 
-      <main className="flex-grow container mx-auto px-4 sm:px-8 py-12">
+      <main className="flex-grow container mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="mb-8">
           <Link 
             href="/"
@@ -25,7 +24,7 @@ export default function IntroductionLessonPage() {
         
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-1 order-2 md:order-1">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sticky top-8">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sticky top-20">
               <h3 className="font-semibold text-lg mb-4">Lesson Modules</h3>
               <ul className="space-y-2">
                 <li className="bg-blue-50 text-blue-700 font-medium p-2 rounded">
@@ -46,7 +45,7 @@ export default function IntroductionLessonPage() {
               </ul>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <Link 
-                  href="simulator" 
+                  href="/simulator" 
                   className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full block text-center"
                 >
                   Open Simulator
@@ -132,7 +131,7 @@ export default function IntroductionLessonPage() {
                   <p className="font-medium text-blue-700">
                     Ready to move on? Continue to the next lesson on Supply Dynamics or try the simulator to get hands-on experience with tokenomic parameters.
                   </p>
-                  <div className="flex gap-4 mt-4">
+                  <div className="flex flex-wrap gap-4 mt-4">
                     <Link 
                       href="/lessons/supply-dynamics" 
                       className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
@@ -140,7 +139,7 @@ export default function IntroductionLessonPage() {
                       Next Lesson
                     </Link>
                     <Link 
-                      href="simulator" 
+                      href="/simulator" 
                       className="bg-white border border-primary text-primary hover:bg-primary-light-opacity font-medium py-2 px-4 rounded"
                     >
                       Try Simulator
@@ -153,18 +152,7 @@ export default function IntroductionLessonPage() {
         </div>
       </main>
 
-      <footer className="py-8 px-4 sm:px-8" style={{backgroundColor: "#0A0E1A"}}>
-        <div className="container mx-auto text-center text-gray-300">
-          <p>Tokenomics Academy - A fully client-rendered learning platform built with Next.js 14</p>
-          <p className="mt-2">
-            <Link href="/about" className="text-primary hover:text-primary-dark hover:underline">About</Link>
-            {" • "}
-            <a href="https://github.com/udhaykumarbala/tokenomics-academy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark hover:underline">
-              GitHub
-            </a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

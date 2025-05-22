@@ -1,0 +1,23 @@
+/* Mobile navigation menu styles */
+.mobile-nav-container {
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  overflow: hidden;
+}
+
+.mobile-nav-menu {
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.5rem;
+}
+
+.mobile-nav-item {
+  transition: background-color 0.2s ease;
+}
+
+/* On small screens, add more touch space */
+@media (max-width: 640px) {
+  .mobile-nav-item {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+  }
+}

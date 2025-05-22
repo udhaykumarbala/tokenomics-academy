@@ -1,17 +1,16 @@
 import Link from "next/link";
+import { Navigation, Footer } from "@/components/navigation";
 import SimulatorComponent from "@/components/simulator/SimulatorComponent";
 
 export default function SimulatorPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="py-6 px-4 sm:px-8 bg-primary text-white">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-bold">Tokenomics Simulator</h1>
-          <p className="mt-2 text-lg">Experiment with token parameters and visualize results</p>
-        </div>
-      </header>
+      <Navigation 
+        title="Tokenomics Simulator" 
+        subtitle="Experiment with token parameters and visualize results" 
+      />
 
-      <main className="flex-grow container mx-auto px-4 sm:px-8 py-12">
+      <main className="flex-grow container mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="mb-8">
           <Link 
             href="/"
@@ -24,9 +23,9 @@ export default function SimulatorPage() {
           </Link>
         </div>
         
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-2xl font-bold mb-6">Tokenomics Simulator</h2>
-          <p className="mb-8 text-gray-700">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Tokenomics Simulator</h2>
+          <p className="mb-6 sm:mb-8 text-gray-700">
             Adjust the parameters below to see how changes affect token metrics over time. 
             Experiment with supply, inflation, burn rates, staking rewards, and more.
           </p>
@@ -35,18 +34,7 @@ export default function SimulatorPage() {
         </div>
       </main>
 
-      <footer className="bg-gray-200 py-8 px-4 sm:px-8">
-        <div className="container mx-auto text-center text-gray-600">
-          <p>Tokenomics Academy - A fully client-rendered learning platform built with Next.js 14</p>
-          <p className="mt-2">
-            <Link href="/about" className="text-primary hover:text-primary-dark hover:underline">About</Link>
-            {" • "}
-            <a href="https://github.com/udhaykumarbala/tokenomics-academy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark hover:underline">
-              GitHub
-            </a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
