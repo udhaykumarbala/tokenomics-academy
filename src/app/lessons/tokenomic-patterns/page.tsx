@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
 
 export default function TokenomicPatternsLessonPage() {
   return (
@@ -98,6 +99,26 @@ export default function TokenomicPatternsLessonPage() {
                 <p>
                   <strong>Examples</strong>: Keep Network, Livepeer, The Graph
                 </p>
+                
+                <FlipCard 
+                  front={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Work Token Mechanics</h4>
+                      <p>How does the work token model create aligned incentives?</p>
+                    </div>
+                  }
+                  back={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Work Token Incentives:</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-white">
+                        <li>Service providers bond tokens as "skin in the game"</li>
+                        <li>Poor service results in slashed tokens (penalties)</li>
+                        <li>More stake = more work allocation opportunities</li>
+                        <li>Fees are distributed proportionally to work completed</li>
+                      </ul>
+                    </div>
+                  }
+                />
                 
                 <div className="case-study">
                   Livepeer requires video transcoding providers to stake tokens, with rewards distributed based on work performed and penalties for poor service.
@@ -316,6 +337,10 @@ export default function TokenomicPatternsLessonPage() {
                 <div className="key-takeaway">
                   The most effective tokenomics systems align incentives between token holders, users, and the protocol itself, creating sustainable value for all participants.
                 </div>
+                
+                <StickyKeyTakeaway>
+                  Effective tokenomics aligns incentives between token holders, users, and the protocol itself, creating sustainable value for all participants.
+                </StickyKeyTakeaway>
                 
                 <div className="section-divider"></div>
                 
