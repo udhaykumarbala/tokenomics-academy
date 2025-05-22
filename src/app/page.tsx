@@ -43,10 +43,16 @@ export default function Home() {
                 Start Learning
               </AnimatedLink>
               <AnimatedLink
-                href="simulator" 
+                href="/simulator" 
                 className="bg-white border border-primary text-primary hover:bg-primary-light-opacity font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 Try Simulator
+              </AnimatedLink>
+              <AnimatedLink
+                href="/glossary" 
+                className="text-primary hover:text-primary-dark underline font-medium py-3 px-1"
+              >
+                View Glossary
               </AnimatedLink>
             </motion.div>
           </div>

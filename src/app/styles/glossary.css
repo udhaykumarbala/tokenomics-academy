@@ -1,0 +1,66 @@
+/* Glossary term styling */
+.glossary-term {
+  display: inline-block;
+  position: relative;
+}
+
+.glossary-term .border-dotted {
+  border-style: dotted;
+  border-bottom-width: 1px;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .glossary-term:hover .border-dotted {
+    border-bottom-width: 2px;
+  }
+}
+
+/* Ensure tooltips are readable in dark mode */
+.dark .glossary-term [role="tooltip"] {
+  color: #e0e0e0;
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .glossary-term [role="tooltip"] .text-gray-700 {
+  color: #d1d5db;
+}
+
+/* Mobile optimizations for tooltips */
+@media (max-width: 640px) {
+  .glossary-term [role="tooltip"] {
+    width: calc(100vw - 40px);
+    max-width: 320px;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: calc(100% + 15px) !important;
+    z-index: 100;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Larger touch target on mobile */
+  .glossary-term .border-dotted {
+    padding: 2px 0;
+  }
+}
+
+/* Special positioning at edges of screen */
+.glossary-term:hover [role="tooltip"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Touch device detection and styling */
+@media (hover: none) and (pointer: coarse) {
+  .touch-device-block {
+    display: block !important;
+  }
+}
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glossary-term [role="tooltip"] {
+    transition: none !important;
+  }
+}

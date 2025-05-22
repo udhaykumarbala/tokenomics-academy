@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Navigation, Footer } from "@/components/navigation";
+import { Navigation, Footer, LessonSideNav } from "@/components/navigation";
 
 export default function IntroductionLessonPage() {
   return (
@@ -24,34 +24,7 @@ export default function IntroductionLessonPage() {
         
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-1 order-2 md:order-1">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sticky top-20">
-              <h3 className="font-semibold text-lg mb-4">Lesson Modules</h3>
-              <ul className="space-y-2">
-                <li className="bg-blue-50 text-blue-700 font-medium p-2 rounded">
-                  <Link href="/lessons/introduction" className="block">Introduction to Tokenomics</Link>
-                </li>
-                <li className="hover:bg-gray-50 p-2 rounded transition-colors">
-                  <Link href="/lessons/supply-dynamics" className="block text-gray-700">Supply Dynamics</Link>
-                </li>
-                <li className="hover:bg-gray-50 p-2 rounded transition-colors">
-                  <Link href="/lessons/staking-mechanisms" className="block text-gray-700">Staking Mechanisms</Link>
-                </li>
-                <li className="hover:bg-gray-50 p-2 rounded transition-colors">
-                  <Link href="/lessons/governance" className="block text-gray-700">Token Governance</Link>
-                </li>
-                <li className="hover:bg-gray-50 p-2 rounded transition-colors">
-                  <Link href="/lessons/tokenomic-patterns" className="block text-gray-700">Tokenomic Patterns</Link>
-                </li>
-              </ul>
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <Link 
-                  href="/simulator" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full block text-center"
-                >
-                  Open Simulator
-                </Link>
-              </div>
-            </div>
+            <LessonSideNav />
           </div>
           
           <div className="md:col-span-3 order-1 md:order-2">
