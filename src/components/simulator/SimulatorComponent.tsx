@@ -14,7 +14,14 @@ import {
 import { simulateTokenomics } from "@/lib/tokenomics/simulator";
 import { TokenomicsParams, SimulationResult } from "@/lib/tokenomics/types";
 import { motion } from "framer-motion";
-import { AnimatedButton } from "@/components/animations";
+import { 
+  AnimatedButton, 
+  AnimatedSlider, 
+  AnimatedValue, 
+  AnimatedInsight,
+  chartEntrance,
+  staggerContainer
+} from "@/components/animations";
 
 export default function SimulatorComponent() {
   const [params, setParams] = useState<TokenomicsParams>({
@@ -268,8 +275,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="initialSupply"
                   name="initialSupply"
                   value={params.initialSupply}
@@ -280,7 +286,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Initial token supply"
                 />
-                <span className="slider-value">{params.initialSupply.toLocaleString()}</span>
+                <AnimatedValue className="slider-value" value={params.initialSupply.toLocaleString()} />
               </div>
             </div>
             
@@ -297,19 +303,19 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
+                <AnimatedSlider
                   type="range"
                   id="maxSupply"
                   name="maxSupply"
                   value={params.maxSupply}
                   onChange={handleSliderChange}
-                  min={params.initialSupply}
+                  min={params.initialSupply.toString()}
                   max="10000000000"
                   step="100000000"
                   className="slider-primary"
                   aria-label="Maximum token supply"
                 />
-                <span className="slider-value">{params.maxSupply.toLocaleString()}</span>
+                <AnimatedValue className="slider-value" value={params.maxSupply.toLocaleString()} />
               </div>
             </div>
             
@@ -326,8 +332,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="inflationRate"
                   name="inflationRate"
                   value={params.inflationRate}
@@ -338,7 +343,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Annual inflation rate"
                 />
-                <span className="slider-value">{params.inflationRate}%</span>
+                <AnimatedValue className="slider-value" value={`${params.inflationRate}%`} />
               </div>
             </div>
             
@@ -355,8 +360,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="burnRate"
                   name="burnRate"
                   value={params.burnRate}
@@ -367,7 +371,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Annual burn rate"
                 />
-                <span className="slider-value">{params.burnRate}%</span>
+                <AnimatedValue className="slider-value" value={`${params.burnRate}%`} />
               </div>
             </div>
             
