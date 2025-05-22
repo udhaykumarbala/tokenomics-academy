@@ -46,7 +46,7 @@ export default function TokenomicPatternsLessonPage() {
               </ul>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <Link 
-                  href="/simulator" 
+                  href="simulator" 
                   className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full block text-center"
                 >
                   Open Simulator
@@ -324,7 +324,7 @@ export default function TokenomicPatternsLessonPage() {
                   Congratulations! You've completed our tokenomics curriculum. Now you can put your knowledge to work:
                 </p>
                 <ul>
-                  <li>Use our <Link href="/simulator" className="text-blue-600 hover:underline">interactive simulator</Link> to test different tokenomic designs</li>
+                  <li>Use our <Link href="simulator" className="text-blue-600 hover:underline">interactive simulator</Link> to test different tokenomic designs</li>
                   <li>Review case studies of successful and failed projects</li>
                   <li>Connect with other tokenomics enthusiasts and designers</li>
                   <li>Start designing your own token economy</li>
@@ -346,7 +346,7 @@ export default function TokenomicPatternsLessonPage() {
                       Start Over
                     </Link>
                     <Link 
-                      href="/simulator" 
+                      href="simulator" 
                       className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded"
                     >
                       Try Simulator

@@ -26,7 +26,7 @@ export default function Home() {
                 Start Learning
               </Link>
               <Link 
-                href="/simulator" 
+                href="simulator" 
                 className="bg-white border border-primary text-primary hover:bg-primary-light-opacity font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 Try Simulator
