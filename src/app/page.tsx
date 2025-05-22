@@ -1,3 +1,7 @@
+"use client";
+
+import { AnimatedLink } from "@/components/animations";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Home() {
@@ -13,28 +17,50 @@ export default function Home() {
       <main className="flex-grow container mx-auto px-4 sm:px-8 py-12">
         <div className="grid md:grid-cols-2 gap-12">
           <div className="flex flex-col justify-center">
-            <h2 className="text-3xl font-bold mb-6">Master Tokenomics Through Interactive Learning</h2>
-            <p className="text-lg mb-8">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="text-3xl font-bold mb-6"
+            >
+              Master Tokenomics Through Interactive Learning
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-lg mb-8"
+            >
               Take your understanding of crypto-economic design from zero to hero with our
               bite-sized lessons and interactive simulator.
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              <Link 
+            </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="flex gap-4 flex-wrap"
+            >
+              <AnimatedLink 
                 href="/lessons/introduction" 
                 className="bg-primary hover:bg-gradient text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 Start Learning
-              </Link>
-              <Link 
+              </AnimatedLink>
+              <AnimatedLink
                 href="simulator" 
                 className="bg-white border border-primary text-primary hover:bg-primary-light-opacity font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 Try Simulator
-              </Link>
-            </div>
+              </AnimatedLink>
+            </motion.div>
           </div>
           
-          <div className="bg-glass border border-gray-200 rounded-xl p-8 flex flex-col text-white backdrop-blur-md">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="bg-glass border border-gray-200 rounded-xl p-8 flex flex-col text-white backdrop-blur-md"
+          >
             <h3 className="text-xl font-semibold mb-4">What you'll learn:</h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-start">
@@ -59,24 +85,50 @@ export default function Home() {
                 Fully interactive simulator helps you visualize how token metrics evolve over time
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
         
         <div className="mt-20">
-          <h2 className="text-2xl font-bold mb-6 text-center">How It Works</h2>
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl font-bold mb-6 text-center"
+          >
+            How It Works
+          </motion.h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white"
+            >
               <div className="text-primary font-bold text-xl mb-2">1. Learn Concepts</div>
               <p>Start with bite-sized lessons on tokenomics fundamentals and advanced concepts.</p>
-            </div>
-            <div className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white"
+            >
               <div className="text-primary font-bold text-xl mb-2">2. Experiment</div>
               <p>Use the simulator to adjust parameters and see how they affect token metrics over time.</p>
-            </div>
-            <div className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="bg-glass p-6 rounded-lg shadow-sm border border-gray-100 text-white"
+            >
               <div className="text-primary font-bold text-xl mb-2">3. Master</div>
               <p>Apply your knowledge to design robust token economies with balanced incentives.</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>

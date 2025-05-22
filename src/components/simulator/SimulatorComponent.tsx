@@ -13,6 +13,8 @@ import {
 } from "recharts";
 import { simulateTokenomics } from "@/lib/tokenomics/simulator";
 import { TokenomicsParams, SimulationResult } from "@/lib/tokenomics/types";
+import { motion } from "framer-motion";
+import { AnimatedButton } from "@/components/animations";
 
 export default function SimulatorComponent() {
   const [params, setParams] = useState<TokenomicsParams>({
@@ -205,14 +207,19 @@ export default function SimulatorComponent() {
             <h3 className="text-xl font-semibold">Tokenomics Parameters</h3>
             <div className="flex items-center space-x-2">
               <span className="text-sm text-gray-600">Auto-Run</span>
-              <button 
+              <motion.button 
                 onClick={toggleAutoRun}
+                whileTap={{ scale: 0.95 }}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${autoRun ? 'bg-primary' : 'bg-gray-200'}`}
               >
-                <span 
-                  className={`${autoRun ? 'translate-x-6' : 'translate-x-1'} inline-block h-4 w-4 transform rounded-full bg-white transition-transform`} 
+                <motion.span 
+                  animate={{ 
+                    translateX: autoRun ? "1.3rem" : "0.15rem" 
+                  }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white`} 
                 />
-              </button>
+              </motion.button>
             </div>
           </div>
           
@@ -222,30 +229,30 @@ export default function SimulatorComponent() {
                 <span className="font-medium text-sm text-gray-700">Preset Configurations</span>
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <button 
+                <AnimatedButton 
                   onClick={() => applyPreset('fixedSupply')}
                   className="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs py-1 px-2 rounded-md"
                 >
                   Fixed Supply
-                </button>
-                <button 
+                </AnimatedButton>
+                <AnimatedButton 
                   onClick={() => applyPreset('highInflation')}
                   className="bg-orange-100 hover:bg-orange-200 text-orange-800 text-xs py-1 px-2 rounded-md"
                 >
                   High Inflation
-                </button>
-                <button 
+                </AnimatedButton>
+                <AnimatedButton 
                   onClick={() => applyPreset('stakingEconomy')}
                   className="bg-green-100 hover:bg-green-200 text-green-800 text-xs py-1 px-2 rounded-md"
                 >
                   Staking Economy
-                </button>
-                <button 
+                </AnimatedButton>
+                <AnimatedButton 
                   onClick={() => applyPreset('deflationaryDAO')}
                   className="bg-purple-100 hover:bg-purple-200 text-purple-800 text-xs py-1 px-2 rounded-md"
                 >
                   Deflationary DAO
-                </button>
+                </AnimatedButton>
               </div>
             </div>
             <div>
@@ -481,12 +488,12 @@ export default function SimulatorComponent() {
             </div>
             
             {!autoRun && (
-              <button
+              <AnimatedButton
                 onClick={runSimulation}
                 className="mt-4 w-full bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-md"
               >
                 Run Simulation
-              </button>
+              </AnimatedButton>
             )}
             {autoRun && (
               <div className="mt-4 text-center text-sm text-gray-600 italic">
@@ -517,35 +524,40 @@ export default function SimulatorComponent() {
               </p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+            >
               <div className="h-64">
                 <div className="flex justify-between items-center mb-2">
                   <h4 className="text-lg font-medium">Token Supply Over Time</h4>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <button 
+                    <AnimatedButton 
                       onClick={() => toggleLineVisibility('totalSupply')} 
                       className={`px-1.5 py-0.5 rounded ${visibleLines.totalSupply ? 'bg-[#8884d8] text-white' : 'bg-gray-200 text-gray-600'}`}
                     >
                       Total
-                    </button>
-                    <button 
+                    </AnimatedButton>
+                    <AnimatedButton 
                       onClick={() => toggleLineVisibility('circulatingSupply')} 
                       className={`px-1.5 py-0.5 rounded ${visibleLines.circulatingSupply ? 'bg-[#82ca9d] text-white' : 'bg-gray-200 text-gray-600'}`}
                     >
                       Circulating
-                    </button>
-                    <button 
+                    </AnimatedButton>
+                    <AnimatedButton 
                       onClick={() => toggleLineVisibility('stakedSupply')} 
                       className={`px-1.5 py-0.5 rounded ${visibleLines.stakedSupply ? 'bg-[#ffc658] text-white' : 'bg-gray-200 text-gray-600'}`}
                     >
                       Staked
-                    </button>
-                    <button 
+                    </AnimatedButton>
+                    <AnimatedButton 
                       onClick={() => toggleLineVisibility('burnedSupply')} 
                       className={`px-1.5 py-0.5 rounded ${visibleLines.burnedSupply ? 'bg-[#ff8042] text-white' : 'bg-gray-200 text-gray-600'}`}
                     >
                       Burned
-                    </button>
+                    </AnimatedButton>
                   </div>
                 </div>
                 <ResponsiveContainer width="100%" height="100%">
@@ -696,7 +708,12 @@ export default function SimulatorComponent() {
                 {/* Related lessons based on parameters and simulation results */}
                 <div className="mt-4 text-sm">
                   <p className="font-medium mb-1">Related lessons:</p>
-                  <div className="flex flex-col gap-3">
+                  <motion.div 
+                    className="flex flex-col gap-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                  >
                     {/* Supply dynamics lessons based on parameters */}
                     {params.inflationRate > 8 && (
                       <div>
@@ -816,11 +833,16 @@ export default function SimulatorComponent() {
                         <p className="text-gray-600 text-xs mt-1 ml-4">Explore fundamentals of token supply models</p>
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Year-by-year breakdown button */}
-                <div className="mt-4">
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="mt-4"
+                >
                   <details className="bg-gray-50 rounded-lg">
                     <summary className="text-sm font-medium text-gray-700 cursor-pointer p-2 hover:bg-gray-100 rounded-lg focus:outline-none">
                       Show year-by-year data breakdown
@@ -854,9 +876,9 @@ export default function SimulatorComponent() {
                       </table>
                     </div>
                   </details>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
       </div>
