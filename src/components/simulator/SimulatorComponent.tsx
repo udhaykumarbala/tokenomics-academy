@@ -100,16 +100,8 @@ export default function SimulatorComponent() {
         if (timer) clearTimeout(timer);
       };
     }
-  }, [params, autoRun, runSimulation]);
+  }, [params, autoRun, runSimulation, debounceTimer]);
 
-  const handleParamChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setParams((prev) => ({
-      ...prev,
-      [name]: parseFloat(value)
-    }));
-  };
-  
   // Handle slider input changes
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
