@@ -388,8 +388,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="stakingReward"
                   name="stakingReward"
                   value={params.stakingReward}
@@ -400,7 +399,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Staking reward APY"
                 />
-                <span className="slider-value">{params.stakingReward}%</span>
+                <AnimatedValue className="slider-value" value={`${params.stakingReward}%`} />
               </div>
             </div>
             
@@ -417,8 +416,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="lockupPeriod"
                   name="lockupPeriod"
                   value={params.lockupPeriod}
@@ -429,7 +427,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Staking lockup period"
                 />
-                <span className="slider-value">{params.lockupPeriod}</span>
+                <AnimatedValue className="slider-value" value={params.lockupPeriod} />
               </div>
             </div>
             
@@ -446,8 +444,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="governanceThreshold"
                   name="governanceThreshold"
                   value={params.governanceThreshold}
@@ -458,7 +455,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Governance proposal threshold"
                 />
-                <span className="slider-value">{params.governanceThreshold}%</span>
+                <AnimatedValue className="slider-value" value={`${params.governanceThreshold}%`} />
               </div>
             </div>
             
@@ -475,8 +472,7 @@ export default function SimulatorComponent() {
                 </span>
               </label>
               <div className="flex items-center space-x-3">
-                <input
-                  type="range"
+                <AnimatedSlider
                   id="simulationYears"
                   name="simulationYears"
                   value={params.simulationYears}
@@ -487,7 +483,7 @@ export default function SimulatorComponent() {
                   className="slider-primary"
                   aria-label="Simulation period in years"
                 />
-                <span className="slider-value">{params.simulationYears}</span>
+                <AnimatedValue className="slider-value" value={params.simulationYears} />
               </div>
             </div>
             
@@ -564,24 +560,31 @@ export default function SimulatorComponent() {
                     </AnimatedButton>
                   </div>
                 </div>
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={results}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" label={{ value: 'Year', position: 'insideBottom', offset: -5 }} />
-                    <YAxis label={{ value: 'Supply', angle: -90, position: 'insideLeft' }} />
-                    <Tooltip 
-                      formatter={(value: number, name: string) => {
-                        return [formatTooltipValue(value, name), name];
-                      }} 
-                      labelFormatter={(label) => `Year ${label}`}
-                    />
-                    <Legend />
-                    {visibleLines.totalSupply && <Line type="monotone" dataKey="totalSupply" stroke="#8884d8" name="Total Supply" />}
-                    {visibleLines.circulatingSupply && <Line type="monotone" dataKey="circulatingSupply" stroke="#82ca9d" name="Circulating Supply" />}
-                    {visibleLines.stakedSupply && <Line type="monotone" dataKey="stakedSupply" stroke="#ffc658" name="Staked Supply" />}
-                    {visibleLines.burnedSupply && <Line type="monotone" dataKey="burnedSupply" stroke="#ff8042" name="Burned Supply" />}
-                  </LineChart>
-                </ResponsiveContainer>
+                <motion.div
+                  initial="hidden"
+                  animate="show"
+                  variants={chartEntrance}
+                  className="w-full h-full"
+                >
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={results}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="year" label={{ value: 'Year', position: 'insideBottom', offset: -5 }} />
+                      <YAxis label={{ value: 'Supply', angle: -90, position: 'insideLeft' }} />
+                      <Tooltip 
+                        formatter={(value: number, name: string) => {
+                          return [formatTooltipValue(value, name), name];
+                        }} 
+                        labelFormatter={(label) => `Year ${label}`}
+                      />
+                      <Legend />
+                      {visibleLines.totalSupply && <Line type="monotone" dataKey="totalSupply" stroke="#8884d8" name="Total Supply" animationDuration={1000} />}
+                      {visibleLines.circulatingSupply && <Line type="monotone" dataKey="circulatingSupply" stroke="#82ca9d" name="Circulating Supply" animationDuration={1200} />}
+                      {visibleLines.stakedSupply && <Line type="monotone" dataKey="stakedSupply" stroke="#ffc658" name="Staked Supply" animationDuration={1400} />}
+                      {visibleLines.burnedSupply && <Line type="monotone" dataKey="burnedSupply" stroke="#ff8042" name="Burned Supply" animationDuration={1600} />}
+                    </LineChart>
+                  </ResponsiveContainer>
+                </motion.div>
               </div>
               
               <div className="h-64">
@@ -602,22 +605,29 @@ export default function SimulatorComponent() {
                     </button>
                   </div>
                 </div>
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={results}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" label={{ value: 'Year', position: 'insideBottom', offset: -5 }} />
-                    <YAxis label={{ value: 'Percentage', angle: -90, position: 'insideLeft' }} />
-                    <Tooltip 
-                      formatter={(value: number, name: string) => {
-                        return [`${value.toFixed(2)}%`, name];
-                      }}
-                      labelFormatter={(label) => `Year ${label}`}
-                    />
-                    <Legend />
-                    {visibleLines.stakingParticipation && <Line type="monotone" dataKey="stakingParticipation" stroke="#ff7300" name="Staking %" />}
-                    {visibleLines.governanceParticipation && <Line type="monotone" dataKey="governanceParticipation" stroke="#007BFF" name="Governance %" />}
-                  </LineChart>
-                </ResponsiveContainer>
+                <motion.div
+                  initial="hidden"
+                  animate="show"
+                  variants={chartEntrance}
+                  className="w-full h-full"
+                >
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={results}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="year" label={{ value: 'Year', position: 'insideBottom', offset: -5 }} />
+                      <YAxis label={{ value: 'Percentage', angle: -90, position: 'insideLeft' }} />
+                      <Tooltip 
+                        formatter={(value: number, name: string) => {
+                          return [`${value.toFixed(2)}%`, name];
+                        }}
+                        labelFormatter={(label) => `Year ${label}`}
+                      />
+                      <Legend />
+                      {visibleLines.stakingParticipation && <Line type="monotone" dataKey="stakingParticipation" stroke="#ff7300" name="Staking %" animationDuration={1000} />}
+                      {visibleLines.governanceParticipation && <Line type="monotone" dataKey="governanceParticipation" stroke="#007BFF" name="Governance %" animationDuration={1200} />}
+                    </LineChart>
+                  </ResponsiveContainer>
+                </motion.div>
               </div>
               
               <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
