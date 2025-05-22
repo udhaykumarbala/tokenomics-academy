@@ -34,6 +34,7 @@ export default function Tooltip({ term, children }: TooltipProps) {
       onMouseLeave={handleMouseLeave}
       onFocus={handleMouseEnter}
       onBlur={handleMouseLeave}
+      onClick={handleMouseEnter}  // Add click event for mobile users
       tabIndex={0}
       aria-describedby={`tooltip-${term.term.replace(/\s+/g, '-').toLowerCase()}`}
     >
@@ -59,6 +60,20 @@ export default function Tooltip({ term, children }: TooltipProps) {
         >
           <div className="font-medium text-primary dark:text-primary mb-1">{term.term}</div>
           <div className="text-gray-700 dark:text-gray-300">{term.definition}</div>
+          
+          {/* Close button - visible on touch devices */}
+          <button 
+            className="absolute top-2 right-2 w-5 h-5 text-gray-400 hover:text-gray-600 hidden sm:hidden touch-device-block"
+            onClick={(e) => {
+              e.stopPropagation();
+              setTooltipVisible(false);
+            }}
+            aria-label="Close tooltip"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
           
           {/* Arrow */}
           <div 
