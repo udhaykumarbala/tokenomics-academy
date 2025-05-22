@@ -656,28 +656,129 @@ export default function SimulatorComponent() {
                   </div>
                 )}
 
-                {/* Related lessons based on parameters */}
+                {/* Related lessons based on parameters and simulation results */}
                 <div className="mt-4 text-sm">
                   <p className="font-medium mb-1">Related lessons:</p>
-                  <div className="flex flex-wrap gap-2">
-                    <a href="/lessons/supply-dynamics" className="text-blue-600 hover:underline flex items-center">
-                      <span>Supply Dynamics</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </a>
-                    <a href="/lessons/staking-mechanisms" className="text-blue-600 hover:underline flex items-center">
-                      <span>Staking Mechanisms</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </a>
-                    <a href="/lessons/tokenomic-patterns" className="text-blue-600 hover:underline flex items-center">
-                      <span>Tokenomic Patterns</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </a>
+                  <div className="flex flex-col gap-3">
+                    {/* Supply dynamics lessons based on parameters */}
+                    {params.inflationRate > 8 && (
+                      <div>
+                        <a href="/lessons/supply-dynamics#emission-schedules" className="text-blue-600 hover:underline flex items-center">
+                          <span>Supply Dynamics - Emission Schedules</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Learn how high inflation impacts long-term token value</p>
+                      </div>
+                    )}
+                    
+                    {params.burnRate > 0 && (
+                      <div>
+                        <a href="/lessons/supply-dynamics#token-burns" className="text-blue-600 hover:underline flex items-center">
+                          <span>Supply Dynamics - Burn Mechanisms</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Understand how token burning creates deflationary pressure</p>
+                      </div>
+                    )}
+                    
+                    {/* Supply dynamics lessons based on simulation results */}
+                    {results.length > 0 && results[results.length - 1].totalSupply < results[0].totalSupply && (
+                      <div>
+                        <a href="/lessons/supply-dynamics#understanding-token-supply-models" className="text-blue-600 hover:underline flex items-center">
+                          <span>Supply Dynamics - Deflationary Supply</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Learn about deflationary tokenomics and their market effects</p>
+                      </div>
+                    )}
+                    
+                    {/* Staking mechanism lessons based on parameters */}
+                    {params.stakingReward > 10 && (
+                      <div>
+                        <a href="/lessons/staking-mechanisms#staking-economics" className="text-blue-600 hover:underline flex items-center">
+                          <span>Staking Mechanisms - Reward Economics</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Explore how high staking rewards influence participation and inflation</p>
+                      </div>
+                    )}
+                    
+                    {params.lockupPeriod > 60 && (
+                      <div>
+                        <a href="/lessons/staking-mechanisms#designing-effective-staking-mechanisms" className="text-blue-600 hover:underline flex items-center">
+                          <span>Staking Mechanisms - Lockup Effects</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Understand the tradeoffs between long lockup periods and liquidity</p>
+                      </div>
+                    )}
+                    
+                    {/* Staking mechanism lessons based on simulation results */}
+                    {results.length > 0 && results[results.length - 1].stakingParticipation > 40 && (
+                      <div>
+                        <a href="/lessons/staking-mechanisms#staking-and-tokenomics" className="text-blue-600 hover:underline flex items-center">
+                          <span>Staking Mechanisms - Supply Impact</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Learn how high staking participation affects circulating supply</p>
+                      </div>
+                    )}
+                    
+                    {/* Governance lessons based on parameters */}
+                    {params.governanceThreshold > 0 && (
+                      <div>
+                        <a href="/lessons/governance#voting-mechanisms" className="text-blue-600 hover:underline flex items-center">
+                          <span>Token Governance - Voting Mechanisms</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Learn about governance thresholds and decision-making models</p>
+                      </div>
+                    )}
+                    
+                    {/* Governance lessons based on simulation results */}
+                    {results.length > 0 && results[results.length - 1].governanceParticipation > 30 && (
+                      <div>
+                        <a href="/lessons/governance#daos-decentralized-autonomous-organizations" className="text-blue-600 hover:underline flex items-center">
+                          <span>Token Governance - DAO Structures</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Explore how high governance participation enables decentralized organizations</p>
+                      </div>
+                    )}
+                    
+                    {/* Fallback if no specific lessons are shown */}
+                    {!results.length && 
+                      params.inflationRate <= 8 && 
+                      params.burnRate === 0 && 
+                      params.stakingReward <= 10 && 
+                      params.lockupPeriod <= 60 && 
+                      params.governanceThreshold === 0 && (
+                      <div>
+                        <a href="/lessons/supply-dynamics" className="text-blue-600 hover:underline flex items-center">
+                          <span>Supply Dynamics</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </a>
+                        <p className="text-gray-600 text-xs mt-1 ml-4">Explore fundamentals of token supply models</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
