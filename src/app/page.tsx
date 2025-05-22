@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatedLink } from "@/components/animations";
 import { motion } from "framer-motion";
 import Link from "next/link";
