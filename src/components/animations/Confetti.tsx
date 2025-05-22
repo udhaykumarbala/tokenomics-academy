@@ -15,9 +15,9 @@ interface ConfettiProps {
 export default function Confetti({
   trigger = true,
   duration = 3000,
-  particleCount = 100,
-  spread = 70,
-  origin = { x: 0.5, y: 0.5 }
+  particleCount = 150,
+  spread = 90,
+  origin = { x: 0.5, y: 0.3 }  // Start from top center of screen
 }: ConfettiProps) {
   const [isActive, setIsActive] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -37,16 +37,24 @@ export default function Confetti({
           useWorker: true
         });
         
-        myCanvas({
-          particleCount,
-          spread,
-          origin,
-          gravity: 1,
-          ticks: 200,
-          colors: ['#5B8DEF', '#38BDF8', '#818CF8', '#A78BFA', '#F472B6'],
-          shapes: ['circle', 'square'],
-          scalar: 1
-        });
+        // Fire confetti twice for a fuller effect
+        const fire = () => {
+          myCanvas({
+            particleCount,
+            spread,
+            origin,
+            gravity: 1.2,
+            ticks: 150,
+            startVelocity: 35,
+            colors: ['#5B8DEF', '#38BDF8', '#818CF8', '#A78BFA', '#F472B6', '#34D399', '#FCD34D'],
+            shapes: ['circle', 'square'],
+            scalar: 1.2
+          });
+        };
+        
+        // Fire twice with a slight delay for a more natural effect
+        fire();
+        setTimeout(fire, 250);
 
         const timeout = setTimeout(() => {
           myCanvas.reset();
