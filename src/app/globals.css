@@ -311,6 +311,25 @@ body {
   .callout, .case-study, .key-takeaway, .example {
     padding: 1rem;
   }
+  
+  /* Improve readability on small screens */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure buttons are big enough to tap on mobile */
+  button, .button, a.button, 
+  [type="button"], 
+  [type="reset"], 
+  [type="submit"] {
+    min-height: 44px; /* Accessibility recommendation for touch targets */
+  }
+  
+  /* Adjust grid layouts for small screens */
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Accessibility enhancements */
