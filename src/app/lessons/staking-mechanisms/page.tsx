@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
 
 export default function StakingMechanismsLessonPage() {
   return (
@@ -75,6 +76,14 @@ export default function StakingMechanismsLessonPage() {
                   <li><strong>Supply Regulation</strong>: Controls circulating supply by incentivizing holders to lock tokens</li>
                 </ul>
                 
+                <div className="key-takeaway">
+                  Well-designed staking mechanisms align participant incentives with network security and long-term sustainability while providing appropriate rewards for capital commitment.
+                </div>
+                
+                <StickyKeyTakeaway>
+                  Well-designed staking mechanisms align incentives with network security and sustainability while properly rewarding capital commitment.
+                </StickyKeyTakeaway>
+                
                 <h3>Proof of Stake (PoS) Variations</h3>
                 
                 <h4>Delegated Proof of Stake (DPoS)</h4>
@@ -100,6 +109,36 @@ export default function StakingMechanismsLessonPage() {
                   <li>Potential for validator collusion</li>
                   <li>"Rich get richer" dynamics</li>
                 </ul>
+                
+                <FlipCard 
+                  front={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">PoS vs DPoS: Key Differences</h4>
+                      <p>How do Proof of Stake and Delegated Proof of Stake differ?</p>
+                    </div>
+                  }
+                  back={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">PoS vs DPoS Comparison:</h4>
+                      <table className="text-sm text-white">
+                        <tbody>
+                          <tr>
+                            <td className="border-b border-white/20 py-1 pr-2 font-medium">Validators</td>
+                            <td className="border-b border-white/20 py-1">PoS: Many potential validators<br/>DPoS: Limited set of elected validators</td>
+                          </tr>
+                          <tr>
+                            <td className="border-b border-white/20 py-1 pr-2 font-medium">Participation</td>
+                            <td className="border-b border-white/20 py-1">PoS: Direct staking required<br/>DPoS: Can delegate without running node</td>
+                          </tr>
+                          <tr>
+                            <td className="py-1 pr-2 font-medium">Decentralization</td>
+                            <td className="py-1">PoS: Generally more decentralized<br/>DPoS: More efficient but less decentralized</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  }
+                />
                 
                 <h4>Bonded Proof of Stake</h4>
                 <p>

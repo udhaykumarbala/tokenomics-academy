@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
 
 export default function GovernanceLessonPage() {
   return (
@@ -98,6 +99,32 @@ export default function GovernanceLessonPage() {
                 <p>
                   <strong>Examples</strong>: Tezos, Compound, MakerDAO
                 </p>
+                
+                <FlipCard 
+                  front={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Governance Trade-offs</h4>
+                      <p>What are the key trade-offs between on-chain and off-chain governance?</p>
+                    </div>
+                  }
+                  back={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Governance Trade-offs:</h4>
+                      <table className="text-sm text-white">
+                        <tbody>
+                          <tr>
+                            <td className="border-b border-white/20 py-1 pr-2 font-medium">On-chain</td>
+                            <td className="border-b border-white/20 py-1">Transparent, automated execution, but higher gas costs and less flexibility</td>
+                          </tr>
+                          <tr>
+                            <td className="py-1 pr-2 font-medium">Off-chain</td>
+                            <td className="py-1">More flexible, lower cost, but relies on social consensus and manual execution</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  }
+                />
                 
                 <div className="case-study">
                   MakerDAO uses an on-chain governance system where MKR token holders vote on critical protocol parameters like stability fees and debt ceilings. The voting weight is proportional to the amount of MKR each holder stakes in the voting contract.
@@ -332,6 +359,10 @@ export default function GovernanceLessonPage() {
                 <div className="key-takeaway">
                   The most effective governance systems are those that balance power among different stakeholders, remain accessible to participants of varying sizes, and can adapt based on the protocol's evolving needs.
                 </div>
+                
+                <StickyKeyTakeaway>
+                  The most effective governance systems balance power among stakeholders, remain accessible to various participants, and adapt as the protocol evolves.
+                </StickyKeyTakeaway>
                 
                 <div className="section-divider"></div>
                 
