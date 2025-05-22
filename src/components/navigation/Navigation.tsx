@@ -105,13 +105,13 @@ export default function Navigation({ title = "Tokenomics Academy", subtitle = "L
         </div>
         
         {/* Mobile navigation menu */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-60 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-          <nav className="py-2">
-            <ul className="flex flex-col space-y-3">
+        <div className={`md:hidden mobile-nav-container ${isMenuOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <nav className="mobile-nav-menu py-2">
+            <ul className="flex flex-col space-y-1">
               <li>
                 <Link 
                   href="/" 
-                  className={`block py-2 px-3 rounded ${pathname === '/' ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
+                  className={`mobile-nav-item block py-2 px-3 rounded ${pathname === '/' ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
                 >
                   Home
                 </Link>
@@ -119,7 +119,7 @@ export default function Navigation({ title = "Tokenomics Academy", subtitle = "L
               <li>
                 <Link 
                   href="/lessons/introduction" 
-                  className={`block py-2 px-3 rounded ${pathname.includes('/lessons') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
+                  className={`mobile-nav-item block py-2 px-3 rounded ${pathname.includes('/lessons') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
                 >
                   Lessons
                 </Link>
@@ -127,7 +127,7 @@ export default function Navigation({ title = "Tokenomics Academy", subtitle = "L
               <li>
                 <Link 
                   href="/simulator" 
-                  className={`block py-2 px-3 rounded ${pathname.includes('/simulator') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
+                  className={`mobile-nav-item block py-2 px-3 rounded ${pathname.includes('/simulator') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
                 >
                   Simulator
                 </Link>
@@ -135,7 +135,7 @@ export default function Navigation({ title = "Tokenomics Academy", subtitle = "L
               <li>
                 <Link 
                   href="/about" 
-                  className={`block py-2 px-3 rounded ${pathname.includes('/about') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
+                  className={`mobile-nav-item block py-2 px-3 rounded ${pathname.includes('/about') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'}`}
                 >
                   About
                 </Link>
