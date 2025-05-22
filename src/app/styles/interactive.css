@@ -1,0 +1,52 @@
+/* FlipCard styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-inner {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+}
+
+/* Accessibility - don't rely solely on hover */
+@media (hover: hover) {
+  .flip-card-container:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Ensure readable font sizes */
+.flip-card-front, .flip-card-back {
+  min-height: 8rem;
+  font-size: 1rem;
+}
+
+/* For reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition: transform 0.1s ease-in-out !important;
+  }
+}
+
+/* StickyKeyTakeaway styles */
+.sticky-takeaway {
+  z-index: 50;
+  max-width: 24rem;
+  width: calc(100% - 2rem);
+}
+
+@media (max-width: 640px) {
+  .sticky-takeaway {
+    max-width: calc(100% - 2rem);
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+  }
+}

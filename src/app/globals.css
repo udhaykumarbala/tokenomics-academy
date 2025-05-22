@@ -3,6 +3,7 @@
 @import "./styles/slider.css";
 @import "./styles/animations.css";
 @import "./styles/navigation.css";
+@import "./styles/interactive.css";
 
 :root {
   --background: #F8F9FA;

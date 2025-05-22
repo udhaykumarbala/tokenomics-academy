@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navigation, Footer, LessonSideNav } from "@/components/navigation";
+import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
 
 export default function IntroductionLessonPage() {
   return (
@@ -53,6 +54,10 @@ export default function IntroductionLessonPage() {
                   Well-designed tokenomics creates a virtuous cycle where token utility drives demand, which supports price, which attracts participants, which increases utility.
                 </div>
                 
+                <StickyKeyTakeaway>
+                  Well-designed tokenomics creates a virtuous cycle where token utility drives demand, which supports price, which attracts participants, which increases utility.
+                </StickyKeyTakeaway>
+                
                 <div className="section-divider"></div>
                 
                 <h3>Key Components of Tokenomics</h3>
@@ -66,6 +71,26 @@ export default function IntroductionLessonPage() {
                   <li><strong>Maximum Supply</strong>: The maximum amount of tokens that will ever exist (if capped)</li>
                   <li><strong>Circulating Supply</strong>: The number of tokens currently in public circulation</li>
                 </ul>
+                
+                <FlipCard 
+                  front={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Token Supply Models</h4>
+                      <p>What are the different models for managing token supply?</p>
+                    </div>
+                  }
+                  back={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Supply Models:</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-white">
+                        <li>Fixed Supply (like Bitcoin)</li>
+                        <li>Inflationary (like Ethereum pre-EIP1559)</li>
+                        <li>Deflationary (token burns)</li>
+                        <li>Elastic Supply (algorithmically adjusted)</li>
+                      </ul>
+                    </div>
+                  }
+                />
                 
                 <div className="callout">
                   Bitcoin has a capped maximum supply of 21 million coins, while Ethereum has no maximum supply limit—instead, it has a controlled issuance rate.
@@ -81,6 +106,26 @@ export default function IntroductionLessonPage() {
                   <li><strong>Community Allocation</strong>: Tokens reserved for community incentives, airdrops, etc.</li>
                   <li><strong>Treasury/Foundation</strong>: Tokens reserved for ongoing development and ecosystem growth</li>
                 </ul>
+                
+                <FlipCard 
+                  front={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Distribution Best Practices</h4>
+                      <p>What distribution model helps ensure long-term success?</p>
+                    </div>
+                  }
+                  back={
+                    <div>
+                      <h4 className="text-lg font-medium mb-2">Best Practices:</h4>
+                      <ul className="list-disc pl-5 space-y-1 text-white">
+                        <li>Fair initial distribution to avoid concentration</li>
+                        <li>Vesting schedules prevent early dumps</li>
+                        <li>Community allocation increases decentralization</li>
+                        <li>Transparently disclosed allocations build trust</li>
+                      </ul>
+                    </div>
+                  }
+                />
                 
                 <h4>3. Token Utility</h4>
                 <p>
