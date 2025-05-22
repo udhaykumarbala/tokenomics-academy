@@ -1,9 +1,42 @@
+"use client";
+
 import Link from "next/link";
 import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
+import { Confetti } from "@/components/animations";
+import { useEffect, useState } from "react";
 
 export default function TokenomicPatternsLessonPage() {
+  const [showConfetti, setShowConfetti] = useState(false);
+  
+  useEffect(() => {
+    try {
+      // Check if we've already shown the confetti in this session
+      const hasShownConfetti = localStorage.getItem('hasShownLessonCompleteConfetti');
+      
+      if (!hasShownConfetti) {
+        // Small delay to ensure the page is loaded before showing confetti
+        const timer = setTimeout(() => {
+          setShowConfetti(true);
+          // Remember that we've shown the confetti in this session
+          localStorage.setItem('hasShownLessonCompleteConfetti', 'true');
+        }, 500);
+        
+        return () => clearTimeout(timer);
+      }
+    } catch (error) {
+      // If localStorage is not available (e.g., in private browsing mode)
+      // Just show the confetti anyway as a fallback
+      const timer = setTimeout(() => {
+        setShowConfetti(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
+      {showConfetti && <Confetti />}
       <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto">
           <h1 className="text-3xl font-bold">Tokenomics Lessons</h1>
