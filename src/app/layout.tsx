@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./styles/glossary.css";
+import { MDXComponentsProvider } from "@/components/mdx";
 
 export const metadata: Metadata = {
   title: "Tokenomics Academy",
@@ -14,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <MDXComponentsProvider>
+          {children}
+        </MDXComponentsProvider>
       </body>
     </html>
   );

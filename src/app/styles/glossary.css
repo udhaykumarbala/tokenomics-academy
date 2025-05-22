@@ -1,0 +1,51 @@
+/* Glossary term styling */
+.glossary-term {
+  display: inline-block;
+  position: relative;
+}
+
+.glossary-term .border-dotted {
+  border-style: dotted;
+  border-bottom-width: 1px;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .glossary-term:hover .border-dotted {
+    border-bottom-width: 2px;
+  }
+}
+
+/* Ensure tooltips are readable in dark mode */
+.dark .glossary-term [role="tooltip"] {
+  color: #e0e0e0;
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .glossary-term [role="tooltip"] .text-gray-700 {
+  color: #d1d5db;
+}
+
+/* Mobile optimizations for tooltips */
+@media (max-width: 640px) {
+  .glossary-term [role="tooltip"] {
+    width: 90vw;
+    max-width: 320px;
+    left: 0 !important;
+    transform: translateX(0) !important;
+  }
+}
+
+/* Special positioning at edges of screen */
+.glossary-term:hover [role="tooltip"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glossary-term [role="tooltip"] {
+    transition: none !important;
+  }
+}
