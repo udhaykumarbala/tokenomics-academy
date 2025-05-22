@@ -1,9 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
+import { Confetti } from "@/components/animations";
+import { useEffect, useState } from "react";
 
 export default function TokenomicPatternsLessonPage() {
+  const [showConfetti, setShowConfetti] = useState(false);
+  
+  // Trigger confetti when the component mounts - this will only happen when user reaches this page
+  useEffect(() => {
+    // Small delay to ensure the page is loaded before showing confetti
+    const timer = setTimeout(() => {
+      setShowConfetti(true);
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
+      {showConfetti && <Confetti />}
       <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto">
           <h1 className="text-3xl font-bold">Tokenomics Lessons</h1>

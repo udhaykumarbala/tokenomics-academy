@@ -18,3 +18,4 @@ export { default as AnimatedButton } from './AnimatedButton';
 export { default as AnimatedSlider } from './AnimatedSlider';
 export { default as AnimatedValue } from './AnimatedValue';
 export { default as AnimatedInsight } from './AnimatedInsight';
+export { default as Confetti } from './Confetti';
