@@ -1,0 +1,77 @@
+/* Web3-inspired slider styling */
+
+/* Slider track */
+.slider-primary {
+  @apply w-full h-2 rounded-lg appearance-none cursor-pointer;
+  background-color: #e5e7eb;
+}
+
+/* Slider track - Firefox */
+.slider-primary::-moz-range-track {
+  @apply h-2 rounded-lg;
+  background-color: #e5e7eb;
+}
+
+/* Slider thumb */
+.slider-primary::-webkit-slider-thumb {
+  @apply appearance-none h-4 w-4 rounded-full;
+  background-color: var(--primary-color);
+  margin-top: -4px; /* For proper centering */
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Slider thumb - Firefox */
+.slider-primary::-moz-range-thumb {
+  @apply h-4 w-4 rounded-full border-none;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Slider thumb hover effect */
+.slider-primary:hover::-webkit-slider-thumb {
+  transform: scale(1.15);
+  background-color: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+
+.slider-primary:hover::-moz-range-thumb {
+  transform: scale(1.15);
+  background-color: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+
+/* Slider focus styles - for accessibility */
+.slider-primary:focus {
+  outline: none;
+}
+
+.slider-primary:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+  transform: scale(1.15);
+}
+
+.slider-primary:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+  transform: scale(1.15);
+}
+
+/* Slider value display */
+.slider-value {
+  @apply w-16 text-right text-sm font-medium;
+  color: var(--on-white-text);
+}
+
+/* For reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .slider-primary::-webkit-slider-thumb,
+  .slider-primary::-moz-range-thumb,
+  .slider-primary:hover::-webkit-slider-thumb,
+  .slider-primary:hover::-moz-range-thumb,
+  .slider-primary:focus::-webkit-slider-thumb,
+  .slider-primary:focus::-moz-range-thumb {
+    transition: none;
+  }
+}

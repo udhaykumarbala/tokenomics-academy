@@ -100,23 +100,40 @@ export default function SimulatorComponent() {
         if (timer) clearTimeout(timer);
       };
     }
-  }, [params, autoRun, runSimulation]);
+  }, [params, autoRun, runSimulation, debounceTimer]);
 
-  const handleParamChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setParams((prev) => ({
-      ...prev,
-      [name]: parseFloat(value)
-    }));
-  };
-  
   // Handle slider input changes
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setParams((prev) => ({
-      ...prev,
-      [name]: parseFloat(value)
-    }));
+    const parsedValue = parseFloat(value);
+    
+    setParams((prev) => {
+      // Special handling for initialSupply and maxSupply relationship
+      if (name === 'initialSupply') {
+        // If initialSupply is being increased beyond maxSupply, increase maxSupply as well
+        if (parsedValue > prev.maxSupply) {
+          return {
+            ...prev,
+            initialSupply: parsedValue,
+            maxSupply: parsedValue
+          };
+        }
+      } else if (name === 'maxSupply') {
+        // Ensure maxSupply is not set lower than initialSupply
+        if (parsedValue < prev.initialSupply) {
+          return {
+            ...prev,
+            maxSupply: prev.initialSupply
+          };
+        }
+      }
+      
+      // Default handling for other parameters
+      return {
+        ...prev,
+        [name]: parsedValue
+      };
+    });
   };
 
   const toggleAutoRun = () => {
@@ -243,14 +260,21 @@ export default function SimulatorComponent() {
                   </div>
                 </span>
               </label>
-              <input
-                type="number"
-                id="initialSupply"
-                name="initialSupply"
-                value={params.initialSupply}
-                onChange={handleParamChange}
-                className="w-full rounded-md border border-gray-300 p-2"
-              />
+              <div className="flex items-center space-x-3">
+                <input
+                  type="range"
+                  id="initialSupply"
+                  name="initialSupply"
+                  value={params.initialSupply}
+                  onChange={handleSliderChange}
+                  min="1000000"
+                  max="1000000000"
+                  step="1000000"
+                  className="slider-primary"
+                  aria-label="Initial token supply"
+                />
+                <span className="slider-value">{params.initialSupply.toLocaleString()}</span>
+              </div>
             </div>
             
             <div>
@@ -265,14 +289,21 @@ export default function SimulatorComponent() {
                   </div>
                 </span>
               </label>
-              <input
-                type="number"
-                id="maxSupply"
-                name="maxSupply"
-                value={params.maxSupply}
-                onChange={handleParamChange}
-                className="w-full rounded-md border border-gray-300 p-2"
-              />
+              <div className="flex items-center space-x-3">
+                <input
+                  type="range"
+                  id="maxSupply"
+                  name="maxSupply"
+                  value={params.maxSupply}
+                  onChange={handleSliderChange}
+                  min={params.initialSupply}
+                  max="10000000000"
+                  step="100000000"
+                  className="slider-primary"
+                  aria-label="Maximum token supply"
+                />
+                <span className="slider-value">{params.maxSupply.toLocaleString()}</span>
+              </div>
             </div>
             
             <div>
@@ -297,9 +328,10 @@ export default function SimulatorComponent() {
                   min="0"
                   max="20"
                   step="0.1"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="slider-primary"
+                  aria-label="Annual inflation rate"
                 />
-                <span className="w-12 text-right text-sm font-medium text-gray-900">{params.inflationRate}%</span>
+                <span className="slider-value">{params.inflationRate}%</span>
               </div>
             </div>
             
@@ -325,9 +357,10 @@ export default function SimulatorComponent() {
                   min="0"
                   max="10"
                   step="0.1"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="slider-primary"
+                  aria-label="Annual burn rate"
                 />
-                <span className="w-12 text-right text-sm font-medium text-gray-900">{params.burnRate}%</span>
+                <span className="slider-value">{params.burnRate}%</span>
               </div>
             </div>
             
@@ -353,9 +386,10 @@ export default function SimulatorComponent() {
                   min="0"
                   max="25"
                   step="0.5"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="slider-primary"
+                  aria-label="Staking reward APY"
                 />
-                <span className="w-12 text-right text-sm font-medium text-gray-900">{params.stakingReward}%</span>
+                <span className="slider-value">{params.stakingReward}%</span>
               </div>
             </div>
             
@@ -381,9 +415,10 @@ export default function SimulatorComponent() {
                   min="0"
                   max="365"
                   step="1"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="slider-primary"
+                  aria-label="Staking lockup period"
                 />
-                <span className="w-12 text-right text-sm font-medium text-gray-900">{params.lockupPeriod}</span>
+                <span className="slider-value">{params.lockupPeriod}</span>
               </div>
             </div>
             
@@ -409,9 +444,10 @@ export default function SimulatorComponent() {
                   min="0.1"
                   max="10"
                   step="0.1"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="slider-primary"
+                  aria-label="Governance proposal threshold"
                 />
-                <span className="w-12 text-right text-sm font-medium text-gray-900">{params.governanceThreshold}%</span>
+                <span className="slider-value">{params.governanceThreshold}%</span>
               </div>
             </div>
             
@@ -437,9 +473,10 @@ export default function SimulatorComponent() {
                   min="1"
                   max="30"
                   step="1"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="slider-primary"
+                  aria-label="Simulation period in years"
                 />
-                <span className="w-12 text-right text-sm font-medium text-gray-900">{params.simulationYears}</span>
+                <span className="slider-value">{params.simulationYears}</span>
               </div>
             </div>
             
