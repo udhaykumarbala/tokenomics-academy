@@ -304,7 +304,6 @@ export default function SimulatorComponent() {
               </label>
               <div className="flex items-center space-x-3">
                 <AnimatedSlider
-                  type="range"
                   id="maxSupply"
                   name="maxSupply"
                   value={params.maxSupply}
