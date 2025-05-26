@@ -1,6 +1,22 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { QuizModal } from "@/components/interactive";
+import { getRandomQuestion, getLessonIdFromPath } from "@/content/quizzes";
+import { usePathname } from "next/navigation";
 
 export default function SupplyDynamicsLessonPage() {
+  const pathname = usePathname();
+  const lessonId = getLessonIdFromPath(pathname);
+  const randomQuestion = getRandomQuestion(lessonId);
+  
+  const [showQuizModal, setShowQuizModal] = useState(false);
+  
+  const handleNextLessonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowQuizModal(true);
+  };
   return (
     <div className="flex flex-col min-h-screen">
       <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -226,6 +242,7 @@ export default function SupplyDynamicsLessonPage() {
                     <Link 
                       href="/lessons/staking-mechanisms" 
                       className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
+                      onClick={handleNextLessonClick}
                     >
                       Next Lesson
                     </Link>
@@ -255,6 +272,18 @@ export default function SupplyDynamicsLessonPage() {
           </p>
         </div>
       </footer>
+      
+      {/* Quiz modal */}
+      {randomQuestion && (
+        <QuizModal
+          isOpen={showQuizModal}
+          onClose={() => setShowQuizModal(false)}
+          question={randomQuestion.question}
+          options={randomQuestion.options}
+          correctAnswer={randomQuestion.correctAnswer}
+          nextLessonPath="/lessons/staking-mechanisms"
+        />
+      )}
     </div>
   );
 }
