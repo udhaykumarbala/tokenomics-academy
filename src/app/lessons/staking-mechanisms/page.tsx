@@ -62,7 +62,7 @@ export default function StakingMechanismsLessonPage() {
               </ul>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <Link 
-                  href="simulator" 
+                  href="/simulator" 
                   className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full block text-center"
                 >
                   Open Simulator
