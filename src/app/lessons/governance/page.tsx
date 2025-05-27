@@ -1,7 +1,22 @@
+"use client";
+
 import Link from "next/link";
-import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
+import { useState } from "react";
+import { FlipCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
+import { getRandomQuestion, getLessonIdFromPath } from "@/content/quizzes";
+import { usePathname } from "next/navigation";
 
 export default function GovernanceLessonPage() {
+  const pathname = usePathname();
+  const lessonId = getLessonIdFromPath(pathname);
+  const randomQuestion = getRandomQuestion(lessonId);
+  
+  const [showQuizModal, setShowQuizModal] = useState(false);
+  
+  const handleNextLessonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowQuizModal(true);
+  };
   return (
     <div className="flex flex-col min-h-screen">
       <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -47,7 +62,7 @@ export default function GovernanceLessonPage() {
               </ul>
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <Link 
-                  href="simulator" 
+                  href="/simulator" 
                   className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded w-full block text-center"
                 >
                   Open Simulator
@@ -379,11 +394,12 @@ export default function GovernanceLessonPage() {
                     <Link 
                       href="/lessons/tokenomic-patterns" 
                       className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
+                      onClick={handleNextLessonClick}
                     >
                       Next Lesson
                     </Link>
                     <Link 
-                      href="simulator" 
+                      href="/simulator" 
                       className="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded"
                     >
                       Try Simulator
@@ -408,6 +424,18 @@ export default function GovernanceLessonPage() {
           </p>
         </div>
       </footer>
+      
+      {/* Quiz modal */}
+      {randomQuestion && (
+        <QuizModal
+          isOpen={showQuizModal}
+          onClose={() => setShowQuizModal(false)}
+          question={randomQuestion.question}
+          options={randomQuestion.options}
+          correctAnswer={randomQuestion.correctAnswer}
+          nextLessonPath="/lessons/tokenomic-patterns"
+        />
+      )}
     </div>
   );
 }
