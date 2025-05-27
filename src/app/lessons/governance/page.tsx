@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FlipCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
+import { CollapsibleCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
 import { getRandomQuestion, getLessonIdFromPath } from "@/content/quizzes";
 import { usePathname } from "next/navigation";
 
@@ -115,21 +115,21 @@ export default function GovernanceLessonPage() {
                   <strong>Examples</strong>: Tezos, Compound, MakerDAO
                 </p>
                 
-                <FlipCard 
-                  front={
+                <CollapsibleCard
+                  title={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Governance Trade-offs</h4>
                       <p>What are the key trade-offs between on-chain and off-chain governance?</p>
                     </div>
                   }
-                  back={
+                  content={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Governance Trade-offs:</h4>
-                      <table className="text-sm text-white">
+                      <table className="text-sm">
                         <tbody>
                           <tr>
-                            <td className="border-b border-white/20 py-1 pr-2 font-medium">On-chain</td>
-                            <td className="border-b border-white/20 py-1">Transparent, automated execution, but higher gas costs and less flexibility</td>
+                            <td className="border-b border-gray-300 dark:border-gray-700 py-1 pr-2 font-medium">On-chain</td>
+                            <td className="border-b border-gray-300 dark:border-gray-700 py-1">Transparent, automated execution, but higher gas costs and less flexibility</td>
                           </tr>
                           <tr>
                             <td className="py-1 pr-2 font-medium">Off-chain</td>
