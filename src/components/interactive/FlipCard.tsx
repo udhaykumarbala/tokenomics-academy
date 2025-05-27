@@ -22,7 +22,7 @@ export default function FlipCard({ front, back, className = "" }: FlipCardProps)
       style={{ perspective: "1000px" }}
     >
       <div 
-        className="relative w-full h-full cursor-pointer"
+        className="relative w-full min-h-[200px] cursor-pointer"
         style={{ 
           transformStyle: "preserve-3d",
           transition: "transform 0.6s"
@@ -30,7 +30,7 @@ export default function FlipCard({ front, back, className = "" }: FlipCardProps)
         onClick={toggleFlip}
       >
         <motion.div
-          className="flip-card-inner"
+          className="flip-card-inner w-full min-h-[200px]"
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 300, damping: 20 }}
           style={{ transformStyle: "preserve-3d" }}
@@ -53,7 +53,8 @@ export default function FlipCard({ front, back, className = "" }: FlipCardProps)
               ${isFlipped ? "block" : "hidden"}`}
             style={{ 
               backfaceVisibility: "hidden",
-              transform: "rotateY(180deg)"
+              transform: "rotateY(180deg)",
+              backgroundColor: "var(--primary-color)"
             }}
           >
             <div className="text-right mb-2">
