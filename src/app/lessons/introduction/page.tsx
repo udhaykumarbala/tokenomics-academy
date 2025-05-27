@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Navigation, Footer, LessonSideNav } from "@/components/navigation";
-import { FlipCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
+import { CollapsibleCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
 import { getRandomQuestion, getLessonIdFromPath } from "@/content/quizzes";
 import { usePathname } from "next/navigation";
 
@@ -87,17 +87,17 @@ export default function IntroductionLessonPage() {
                   <li><strong>Circulating Supply</strong>: The number of tokens currently in public circulation</li>
                 </ul>
                 
-                <FlipCard 
-                  front={
+                <CollapsibleCard
+                  title={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Token Supply Models</h4>
                       <p>What are the different models for managing token supply?</p>
                     </div>
                   }
-                  back={
+                  content={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Supply Models:</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-white">
+                      <ul className="list-disc pl-5 space-y-1">
                         <li>Fixed Supply (like Bitcoin)</li>
                         <li>Inflationary (like Ethereum pre-EIP1559)</li>
                         <li>Deflationary (token burns)</li>
@@ -122,17 +122,17 @@ export default function IntroductionLessonPage() {
                   <li><strong>Treasury/Foundation</strong>: Tokens reserved for ongoing development and ecosystem growth</li>
                 </ul>
                 
-                <FlipCard 
-                  front={
+                <CollapsibleCard
+                  title={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Distribution Best Practices</h4>
                       <p>What distribution model helps ensure long-term success?</p>
                     </div>
                   }
-                  back={
+                  content={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Best Practices:</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-white">
+                      <ul className="list-disc pl-5 space-y-1">
                         <li>Fair initial distribution to avoid concentration</li>
                         <li>Vesting schedules prevent early dumps</li>
                         <li>Community allocation increases decentralization</li>

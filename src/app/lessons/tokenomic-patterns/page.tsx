@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FlipCard, StickyKeyTakeaway } from "@/components/interactive";
+import { CollapsibleCard, StickyKeyTakeaway } from "@/components/interactive";
 import { Confetti } from "@/components/animations";
 import { useEffect, useState } from "react";
 
@@ -133,17 +133,17 @@ export default function TokenomicPatternsLessonPage() {
                   <strong>Examples</strong>: Keep Network, Livepeer, The Graph
                 </p>
                 
-                <FlipCard 
-                  front={
+                <CollapsibleCard
+                  title={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Work Token Mechanics</h4>
                       <p>How does the work token model create aligned incentives?</p>
                     </div>
                   }
-                  back={
+                  content={
                     <div>
                       <h4 className="text-lg font-medium mb-2">Work Token Incentives:</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-white">
+                      <ul className="list-disc pl-5 space-y-1">
                         <li>Service providers bond tokens as "skin in the game"</li>
                         <li>Poor service results in slashed tokens (penalties)</li>
                         <li>More stake = more work allocation opportunities</li>

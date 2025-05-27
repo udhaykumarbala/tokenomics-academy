@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FlipCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
+import { CollapsibleCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
 import { getRandomQuestion, getLessonIdFromPath } from "@/content/quizzes";
 import { usePathname } from "next/navigation";
 
@@ -125,25 +125,25 @@ export default function StakingMechanismsLessonPage() {
                   <li>"Rich get richer" dynamics</li>
                 </ul>
                 
-                <FlipCard 
-                  front={
+                <CollapsibleCard
+                  title={
                     <div>
                       <h4 className="text-lg font-medium mb-2">PoS vs DPoS: Key Differences</h4>
                       <p>How do Proof of Stake and Delegated Proof of Stake differ?</p>
                     </div>
                   }
-                  back={
+                  content={
                     <div>
                       <h4 className="text-lg font-medium mb-2">PoS vs DPoS Comparison:</h4>
-                      <table className="text-sm text-white">
+                      <table className="text-sm">
                         <tbody>
                           <tr>
-                            <td className="border-b border-white/20 py-1 pr-2 font-medium">Validators</td>
-                            <td className="border-b border-white/20 py-1">PoS: Many potential validators<br/>DPoS: Limited set of elected validators</td>
+                            <td className="border-b border-gray-300 dark:border-gray-700 py-1 pr-2 font-medium">Validators</td>
+                            <td className="border-b border-gray-300 dark:border-gray-700 py-1">PoS: Many potential validators<br/>DPoS: Limited set of elected validators</td>
                           </tr>
                           <tr>
-                            <td className="border-b border-white/20 py-1 pr-2 font-medium">Participation</td>
-                            <td className="border-b border-white/20 py-1">PoS: Direct staking required<br/>DPoS: Can delegate without running node</td>
+                            <td className="border-b border-gray-300 dark:border-gray-700 py-1 pr-2 font-medium">Participation</td>
+                            <td className="border-b border-gray-300 dark:border-gray-700 py-1">PoS: Direct staking required<br/>DPoS: Can delegate without running node</td>
                           </tr>
                           <tr>
                             <td className="py-1 pr-2 font-medium">Decentralization</td>
