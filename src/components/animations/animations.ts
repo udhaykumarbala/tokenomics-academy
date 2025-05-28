@@ -36,8 +36,8 @@ export const fadeInUp = {
 
 // Button hover animation
 export const buttonHover = {
-  scale: 1.03,
-  transition: { duration: 0.2 },
+  scale: 1.05,
+  transition: { type: "spring", stiffness: 300 },
 };
 
 // Link hover animation

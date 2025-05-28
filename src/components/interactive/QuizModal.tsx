@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Confetti } from "@/components/animations";
 
@@ -26,6 +26,18 @@ export default function QuizModal({
   const [hasAnswered, setHasAnswered] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
+  const resetQuizState = () => {
+    setSelectedAnswer(null);
+    setHasAnswered(false);
+    setShowConfetti(false);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      resetQuizState();
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleAnswerSelect = (answer: string) => {
@@ -43,7 +55,13 @@ export default function QuizModal({
   };
 
   const handleNextLesson = () => {
+    resetQuizState();
     router.push(nextLessonPath);
+  };
+
+  const handleClose = () => {
+    resetQuizState();
+    onClose();
   };
 
   return (
@@ -89,7 +107,7 @@ export default function QuizModal({
               </button>
             ) : (
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
               >
                 Review Lesson
@@ -98,7 +116,7 @@ export default function QuizModal({
           ) : (
             <>
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className="border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded"
               >
                 Cancel
