@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen background-gradient-blur-container">
       <Navigation />
 
       <main className="flex-grow container mx-auto px-4 sm:px-8 py-8 sm:py-12">
@@ -102,30 +102,30 @@ export default function Home() {
           </motion.h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
               className="bg-glass p-5 sm:p-6 rounded-lg shadow-sm border border-gray-100 text-white"
             >
               <div className="text-primary font-bold text-lg sm:text-xl mb-2">1. Learn Concepts</div>
               <p>Start with bite-sized lessons on tokenomics fundamentals and advanced concepts.</p>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               className="bg-glass p-5 sm:p-6 rounded-lg shadow-sm border border-gray-100 text-white"
             >
               <div className="text-primary font-bold text-lg sm:text-xl mb-2">2. Experiment</div>
               <p>Use the simulator to adjust parameters and see how they affect token metrics over time.</p>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
               className="bg-glass p-5 sm:p-6 rounded-lg shadow-sm border border-gray-100 text-white"
             >
               <div className="text-primary font-bold text-lg sm:text-xl mb-2">3. Master</div>

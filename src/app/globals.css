@@ -19,6 +19,8 @@
   --key-takeaway-bg: #e8f5e9;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --button-hover-gradient: linear-gradient(90deg, #3A86FF, #9D4EDD);
+  --primary-rgb: 58, 134, 255;
+  --secondary-rgb: 157, 78, 221;
   
   /* Animation durations */
   --transition-fast: 150ms;
@@ -547,4 +549,25 @@ body {
   .callout, .case-study, .key-takeaway, .example {
     padding: 1rem;
   }
+}
+
+.background-gradient-blur-container {
+  position: relative;
+  isolation: isolate; /* Create a new stacking context */
+}
+
+.background-gradient-blur-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind content */
+  background-image: 
+    radial-gradient(ellipse at 20% 30%, rgba(var(--primary-rgb), 0.15), transparent 70%),
+    radial-gradient(ellipse at 80% 70%, rgba(var(--secondary-rgb), 0.15), transparent 70%);
+  filter: blur(60px); /* Adjust blur amount */
+  opacity: 0.7; /* Adjust opacity */
+  pointer-events: none; /* Ensure it doesn't interfere with interactions */
 }

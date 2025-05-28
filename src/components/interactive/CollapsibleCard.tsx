@@ -22,7 +22,7 @@ export default function CollapsibleCard({ title, content, className = "" }: Coll
       <button
         type="button"
         onClick={toggleOpen}
-        className="collapsible-card-header flex items-center justify-between w-full p-4 text-left bg-gray-50 hover:bg-gray-100 focus:outline-none"
+        className="collapsible-card-header flex items-center justify-between w-full p-4 text-left bg-gray-200 text-gray-800 hover:bg-gray-300 focus:outline-none"
         aria-expanded={isOpen}
       >
         <div className="font-medium">{title}</div>
