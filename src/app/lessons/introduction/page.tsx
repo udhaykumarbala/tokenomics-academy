@@ -1,18 +1,61 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect
+import { useRouter } from "next/navigation"; // Added useRouter
 import { Navigation, Footer, LessonSideNav } from "@/components/navigation";
-import { CollapsibleCard, StickyKeyTakeaway, QuizModal } from "@/components/interactive";
+import { CollapsibleCard, StickyKeyTakeaway, QuizModal, SkipAheadModal } from "@/components/interactive"; // Added SkipAheadModal
 import { getRandomQuestion, getLessonIdFromPath } from "@/content/quizzes";
+import { lessonOrder } from "@/lib/lessonOrder"; // Added lessonOrder
 import { usePathname } from "next/navigation";
 
 export default function IntroductionLessonPage() {
   const pathname = usePathname();
+  const router = useRouter(); // Added router
   const lessonId = getLessonIdFromPath(pathname);
   const randomQuestion = getRandomQuestion(lessonId);
   
   const [showQuizModal, setShowQuizModal] = useState(false);
+  const [showSkipAheadModal, setShowSkipAheadModal] = useState(false); // Added state for SkipAheadModal
+  const [firstIncompleteLessonPath, setFirstIncompleteLessonPath] = useState<string | null>(null); // Added state for firstIncompleteLessonPath
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const completedLessons = JSON.parse(localStorage.getItem("completedLessons") || "[]");
+      const currentLessonIndex = lessonOrder.indexOf(lessonId);
+
+      if (currentLessonIndex > 0) { // Only check for lessons after the first one
+        for (let i = 0; i < currentLessonIndex; i++) {
+          const previousLessonId = lessonOrder[i];
+          if (!completedLessons.includes(previousLessonId)) {
+            setFirstIncompleteLessonPath(`/lessons/${previousLessonId}`);
+            setShowSkipAheadModal(true);
+            break;
+          }
+        }
+      }
+    }
+  }, [lessonId]);
+
+  const handleGoToFirstIncomplete = (path: string) => {
+    router.push(path);
+    setShowSkipAheadModal(false);
+  };
+
+  const handleMarkPreviousComplete = () => {
+    const completedLessons = JSON.parse(localStorage.getItem("completedLessons") || "[]");
+    const currentLessonIndex = lessonOrder.indexOf(lessonId);
+    
+    for (let i = 0; i < currentLessonIndex; i++) {
+      const previousLessonId = lessonOrder[i];
+      if (!completedLessons.includes(previousLessonId)) {
+        completedLessons.push(previousLessonId);
+      }
+    }
+    localStorage.setItem("completedLessons", JSON.stringify(completedLessons));
+    setShowSkipAheadModal(false);
+    // Potentially trigger a re-render or event for LessonSideNav if necessary
+  };
   
   const handleNextLessonClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -197,6 +240,17 @@ export default function IntroductionLessonPage() {
           options={randomQuestion.options}
           correctAnswer={randomQuestion.correctAnswer}
           nextLessonPath="/lessons/supply-dynamics"
+          currentLessonId={lessonId} // Pass the lessonId here
+        />
+      )}
+
+      {firstIncompleteLessonPath && (
+        <SkipAheadModal
+          isOpen={showSkipAheadModal}
+          onClose={() => setShowSkipAheadModal(false)}
+          firstIncompleteLessonPath={firstIncompleteLessonPath}
+          onGoToFirstIncomplete={handleGoToFirstIncomplete}
+          onMarkPreviousComplete={handleMarkPreviousComplete}
         />
       )}
     </div>

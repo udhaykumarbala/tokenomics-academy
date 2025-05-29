@@ -1,8 +1,8 @@
 // Animation variants for consistent use across the application
 export const pageTransition = {
-  hidden: { opacity: 0, y: 20 },
-  enter: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
+  hidden: { opacity: 0, x: 20 }, // Start slightly off-screen to the right and faded
+  enter: { opacity: 1, x: 0 },    // Slide in to original position and fade in
+  exit: { opacity: 0, x: -20 },   // Slide out to the left and fade out
 };
 
 // Timing for animations
