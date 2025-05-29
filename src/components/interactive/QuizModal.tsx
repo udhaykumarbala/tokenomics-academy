@@ -10,7 +10,8 @@ interface QuizModalProps {
   question: string;
   options: string[];
   correctAnswer: string;
-  nextLessonPath: string;
+  nextLessonPath:string;
+  currentLessonId: string; // Added currentLessonId
 }
 
 export default function QuizModal({
@@ -20,6 +21,7 @@ export default function QuizModal({
   options,
   correctAnswer,
   nextLessonPath,
+  currentLessonId, // Added currentLessonId
 }: QuizModalProps) {
   const router = useRouter();
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -55,6 +57,14 @@ export default function QuizModal({
   };
 
   const handleNextLesson = () => {
+    // Save completed lesson to localStorage
+    if (currentLessonId) {
+      const completedLessons = JSON.parse(localStorage.getItem("completedLessons") || "[]");
+      if (!completedLessons.includes(currentLessonId)) {
+        completedLessons.push(currentLessonId);
+        localStorage.setItem("completedLessons", JSON.stringify(completedLessons));
+      }
+    }
     resetQuizState();
     router.push(nextLessonPath);
   };

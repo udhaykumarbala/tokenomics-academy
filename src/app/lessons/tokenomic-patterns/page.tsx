@@ -1,14 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { CollapsibleCard, StickyKeyTakeaway } from "@/components/interactive";
+import { CollapsibleCard, StickyKeyTakeaway, SkipAheadModal } from "@/components/interactive"; // Added SkipAheadModal
 import { Confetti } from "@/components/animations";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation"; // Added useRouter
+import { lessonOrder } from "@/lib/lessonOrder"; // Added lessonOrder
+import { usePathname } from "next/navigation"; // Added usePathname
+import { getLessonIdFromPath } from "@/content/quizzes"; // Added getLessonIdFromPath
 
 export default function TokenomicPatternsLessonPage() {
   const [showConfetti, setShowConfetti] = useState(false);
+  const pathname = usePathname(); // Added pathname
+  const router = useRouter(); // Added router
+  const lessonId = getLessonIdFromPath(pathname); // Added lessonId
+
+  const [showSkipAheadModal, setShowSkipAheadModal] = useState(false); // Added state for SkipAheadModal
+  const [firstIncompleteLessonPath, setFirstIncompleteLessonPath] = useState<string | null>(null); // Added state for firstIncompleteLessonPath
   
   useEffect(() => {
+    // Confetti logic
     try {
       // Check if we've already shown the confetti in this session
       const hasShownConfetti = localStorage.getItem('hasShownLessonCompleteConfetti');
@@ -32,11 +43,61 @@ export default function TokenomicPatternsLessonPage() {
       
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, []); // Keep this useEffect for confetti as is, runs once.
+
+  useEffect(() => {
+    // Skip ahead modal logic
+    if (typeof window !== "undefined") {
+      const completedLessons = JSON.parse(localStorage.getItem("completedLessons") || "[]");
+      const currentLessonIndex = lessonOrder.indexOf(lessonId);
+
+      if (currentLessonIndex > 0) { 
+        for (let i = 0; i < currentLessonIndex; i++) {
+          const previousLessonId = lessonOrder[i];
+          if (!completedLessons.includes(previousLessonId)) {
+            setFirstIncompleteLessonPath(`/lessons/${previousLessonId}`);
+            setShowSkipAheadModal(true);
+            break;
+          }
+        }
+      }
+    }
+  }, [lessonId]); // Runs when lessonId changes (though lessonId is static for a page, it's a dependency)
+
+  const handleGoToFirstIncomplete = (path: string) => {
+    router.push(path);
+    setShowSkipAheadModal(false);
+  };
+
+  const handleMarkPreviousComplete = () => {
+    const completedLessons = JSON.parse(localStorage.getItem("completedLessons") || "[]");
+    const currentLessonIndex = lessonOrder.indexOf(lessonId);
+    
+    for (let i = 0; i < currentLessonIndex; i++) {
+      const previousLessonId = lessonOrder[i];
+      if (!completedLessons.includes(previousLessonId)) {
+        completedLessons.push(previousLessonId);
+      }
+    }
+    localStorage.setItem("completedLessons", JSON.stringify(completedLessons));
+    setShowSkipAheadModal(false);
+    // Optionally, force a re-render of LessonSideNav or reload if checkmarks don't update.
+    // For now, relying on navigation or existing state updates in LessonSideNav.
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
       {showConfetti && <Confetti />}
+      {/* Ensure SkipAheadModal is rendered before other page content if it's blocking */}
+      {firstIncompleteLessonPath && (
+        <SkipAheadModal
+          isOpen={showSkipAheadModal}
+          onClose={() => setShowSkipAheadModal(false)}
+          firstIncompleteLessonPath={firstIncompleteLessonPath}
+          onGoToFirstIncomplete={handleGoToFirstIncomplete}
+          onMarkPreviousComplete={handleMarkPreviousComplete}
+        />
+      )}
       <header className="py-6 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto">
           <h1 className="text-3xl font-bold">Tokenomics Lessons</h1>
